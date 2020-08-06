@@ -1,5 +1,14 @@
 include ./mixins.pug
 
+-
+  const obj = {
+    'Проживаю:': 'Новосибирск',
+    'Возраст:': '27 лет',
+    'Родился:': '1 января 1991'
+  }
+
+
+
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -10,7 +19,7 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        section.fullscreen-section.hero
+        section.hero
           .container.hero__container
             header.header
               .logo-wrapper
@@ -29,6 +38,28 @@ html(lang="en")
               a(href="#" class='scroll__btn-text') Скролл
                 span.arrow-wrapper
                   +icon('scroll', 'scroll-down')
+            .portfolio
+              .portfolio__personal-data
+                .photo__wrapper
+                  +image('content/user.jpg', 'user-pic')
+                .basic-data
+                  ul.basic-data__list
+                    each value, key in obj
+                      li.basic-data__item
+                        p.category= key
+                  ul.basic-data__list
+                    each value, key in obj
+                      li.basic-data__item
+                        p.value= value      
+                        
+              .portfolio__desc
+                .greetings Привет, меня зовут 
+                .object-name Владимир Астаханов
+                .about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+
+                  
                   
               
                
