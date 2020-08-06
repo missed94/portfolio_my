@@ -1,0 +1,19 @@
+include ./mixins.pug
+
+-
+  const obj = {
+    'Проживаю:': 'Новосибирск',
+    'Возраст:': '27 лет',
+    'Родился:': '1 января 1991'
+  }
+
+doctype html
+html(lang = "ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Portfolio | main page
+    body
+        .wrapper
+            .maincontent    
+                block content    

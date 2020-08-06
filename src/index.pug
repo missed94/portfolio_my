@@ -1,24 +1,8 @@
-include ./mixins.pug
-
--
-  const obj = {
-    'Проживаю:': 'Новосибирск',
-    'Возраст:': '27 лет',
-    'Родился:': '1 января 1991'
-  }
+extends ./main.layout.pug
 
 
-
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Portfolio | main page
-  body
-    .wrapper
-      .maincontent
+block content
+  .welcome-section
         section.hero
           .container.hero__container
             header.header
@@ -38,30 +22,32 @@ html(lang="en")
               a(href="#" class='scroll__btn-text') Скролл
                 span.arrow-wrapper
                   +icon('scroll', 'scroll-down')
-            .portfolio
-              .portfolio__personal-data
-                .photo__wrapper
-                  +image('content/user.jpg', 'user-pic')
-                .basic-data
-                  ul.basic-data__list
-                    each value, key in obj
-                      li.basic-data__item
-                        p.category= key
-                  ul.basic-data__list
-                    each value, key in obj
-                      li.basic-data__item
-                        p.value= value      
-                        
-              .portfolio__desc
-                .greetings Привет, меня зовут 
-                .object-name Владимир Астаханов
-                .about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                .footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+          section.about
+            .container
+              .portfolio
+                .portfolio__personal-data
+                  .photo__wrapper
+                    +image('content/user.jpg', 'user-pic')
+                  .basic-data
+                    ul.basic-data__list
+                      each value, key in obj
+                        li.basic-data__item
+                          p.category= key
+                    ul.basic-data__list
+                      each value, key in obj
+                        li.basic-data__item
+                          p.value= value      
+                          
+                .portfolio__desc
+                  .greetings Привет, меня зовут 
+                  .object-name Владимир Астаханов
+                  .about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                  .footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
 
-                  
-                  
-              
-               
-
+                    
+                    
+                
+                
+    
 
