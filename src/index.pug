@@ -10,6 +10,27 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        section.fullscreen-section.hero
+          .container.hero__container
+            header.header
+              .logo-wrapper
+                h3.logo ВА
+              +menu('menu',["Обо мне", "Навыки", "Работы", "Отзывы"]) 
+              .socials
+                  ul.socials__list
+                    each social in ['insta', 'vk', 'github', 'envelope']
+                      li.socials__item
+                        a(href="#" class=`socials__link .social__link_${social}`)
+                          +icon(`${social}`, 'social-icon')
+            .hero__title
+              p Личный сайт веб разработчика              
+              h1.hero__title-text Владимир Астаханов 
+            .scroll__btn
+              a(href="#" class='scroll__btn-text') Скролл
+                span.arrow-wrapper
+                  +icon('scroll', 'scroll-down')
+                  
+              
+               
+
+
