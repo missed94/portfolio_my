@@ -70,10 +70,37 @@ block content
                                 stop(offset="0%" stop-color="#5500f2")
                                 stop(offset="100%" stop-color="#8f00ef")
                             .skill__title #{skill}
-                    
-                              
-                    
-                        
+    section.works 
+      .container
+        .section-title Мои Работы
+        .works__content 
+          .works-preview
+            .works-preview__pictures
+              +image("content/preview_1.jpg")
+              .works-preview__thumbs
+                ul.thumbs
+                  - for (var i = 1; i < 4; i++)
+                    li.thumbs__item 
+                      a(href="").thumbs__link
+                        +image(`content/preview_${i}.jpg`,"thumb")               
+              .works-preview__btns
+                .square-btns
+                  button(type="buttons").square-btns__item.square-btns__item--next 
+                    +icon('arrow-down', 'arrow-next')              
+                  button(type="buttons").square-btns__item.square-btns__item--prev
+                    +icon('arrow-down', 'arrow-prev')               
+            .works-preview__info
+              - var tags = ["HTML","CSS","JavaScript"] 
+              ul.tags
+              each item in tags
+                li.tags__item
+                  .tag #{item}         
+              .works-preview__title Сайт школы образования
+              .works-preview__desc 
+                p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+              a(href="").iconed-link Посмотреть сайт
+
+
                           
                     
                     
