@@ -1,60 +1,54 @@
-.portfolio {
-  display: flex;
-  margin: 0 auto;
-  margin-bottom: 277px;
-  padding: 0px 202px;
+.about__user {
+  width: 41.5%
+  
 }
 
-.portfolio__personal-data {
+.user {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 }
 
-.photo__wrapper {
+.user__avatar {
   width: 200px;
   height: 200px;
   overflow: hidden;
   border-radius: 50%;
-  margin-bottom: 75px;
-}
-
-.basic-data {
+  margin-bottom: 70px;
   display: flex;
+  justify-content: center;
+  flex-shrink:0;
 }
 
-.basic-data__list {
-  margin-right: 80px;
-  &:last-child {
-    margin-right: 0;
-  }
+table {
+  width: 100%;
+  
 }
 
-.basic-data__item {
-  margin-bottom: 19px;
-  &:last-child {
-    margin-right: 0;
-  }
+
+
+.basic__data-row {
+  
 }
 
-.category {
+.category,.value {
   font-weight: 600;
   font-size: 16px;
   line-height: 1;
+  padding-bottom: 15px;
+
+  
+  
 }
 
 .value {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1;
   color: #ffffff;
-  min-width: 112px;
 }
 
 .portfolio__desc {
+  flex:1;
   display: flex;
   flex-direction: column;
-  margin-left: 145px;
 }
 
 .greetings {
@@ -62,6 +56,7 @@
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .object-name {
@@ -76,7 +71,8 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 30px;
-  margin-bottom: 90px;
+  margin-bottom: 80px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footnote {
@@ -85,6 +81,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 30px;
+  
 
   &:before {
     content: "*";

@@ -16,38 +16,66 @@ block content
                         a(href="#" class=`socials__link .social__link_${social}`)
                           +icon(`${social}`, 'social-icon')
             .hero__title
-              p Личный сайт веб разработчика              
-              h1.hero__title-text Владимир Астаханов 
+              p Личный сайт #[br] веб разработчика              
+              h1.hero__title-text Владимир Астаханов
+
+
             .scroll__btn
               a(href="#" class='scroll__btn-text') Скролл
                 span.arrow-wrapper
                   +icon('scroll', 'scroll-down')
-          section.about
-            .container
-              .portfolio
-                .portfolio__personal-data
-                  .photo__wrapper
-                    +image('content/user.jpg', 'user-pic')
-                  .basic-data
-                    ul.basic-data__list
-                      each value, key in obj
-                        li.basic-data__item
-                          p.category= key
-                    ul.basic-data__list
-                      each value, key in obj
-                        li.basic-data__item
-                          p.value= value      
+        section.about-section
+            .container.about__container
+              .about__user
+                .user
+                  .user__avatar
+                    .user__avatar-style
+                      +image('content/user.jpg', 'user-pic')
+                  table.basic-data
+                    each item in obj
+                      tr.basic__data-row
+                        td.category #{item[0]}
+                        td.value #{item[1]}
+              .portfolio__desc
+                    .greetings Привет, меня зовут 
+                    .object-name Владимир Астаханов
+                    .about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                    .footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+  .middle-section
+    section.values
+      .container.values__container
+        .values__title 
+          .values__title-text Чем я могу быть полезен вам
+          .values__content
+            p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!    
+        .values__widget
+          -
+            var skillCategories = [
+              ["Frontend", ["HTML","CSS","javascript","Vue"]],
+              ["Workflow", ["GIT","Terminal","Gulp","Webpack"]],
+            ];
+          ul.skills
+            each category in skillCategories
+              li.skills__item
+                .skills-row 
+                  .skills-row__title #{category[0]}
+                    ul.skills-row-list
+                      each skill in category[1]
+                        li.skills-row__item
+                          .skill
+                            svg(viewBox="0 0 100 100").skill__circle-shape
+                              circle(cx="50" cy="50" r="40").skill__circle.skill__circle--layer--under
+                              circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform="rotate(180 50 50)").skill__circle.skill__circle--layer--above
+                              linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
+                                stop(offset="0%" stop-color="#5500f2")
+                                stop(offset="100%" stop-color="#8f00ef")
+                            .skill__title #{skill}
+                    
+                              
+                    
+                        
                           
-                .portfolio__desc
-                  .greetings Привет, меня зовут 
-                  .object-name Владимир Астаханов
-                  .about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                  .footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-
-
                     
                     
-                
-                
-    
+        
 
