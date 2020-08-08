@@ -1,10 +1,18 @@
 .thumbs {
-display: flex;
-
+  display: flex;
+  position: relative;
 }
-
 
 .thumbs__item {
-    width: 120px;
+  width: 120px;
+  transition: 0.2s;
+  /* border: 2px solid transparent; */
+  &.active,
+  &:hover {
+    outline: 2px solid #dc9322;
+    z-index: 2;
+  }
 }
 
+.thumbs__link {
+}
