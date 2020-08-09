@@ -1,13 +1,23 @@
-
 .about-section {
-    padding-top: 170px
+  padding-top: 170px;
 }
 
-
-.about__container{
-    max-width: 1000px;
+.about__container {
+  max-width: 1000px;
 }
 
 .about__user-wrapper {
-display: flex;
+  display: flex;
+
+  @include phones {
+    flex-direction: column;
+  }
+}
+
+.about__user {
+  width: 41.5%; 
+  
+  @include phones {
+    width: 100%;
+  }
 }
