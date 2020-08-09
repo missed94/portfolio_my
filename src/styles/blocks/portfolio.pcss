@@ -1,11 +1,11 @@
-
-
 .user {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  
+  @include phones {
+    margin-bottom: 45px;
+  }
 }
 
 .user__avatar {
@@ -16,28 +16,22 @@
   margin-bottom: 70px;
   display: flex;
   justify-content: center;
-  flex-shrink:0;
+  flex-shrink: 0;
 }
 
 table {
   width: 100%;
-  
 }
-
-
 
 .basic__data-row {
-  
 }
 
-.category,.value {
+.category,
+.value {
   font-weight: 600;
   font-size: 16px;
   line-height: 1;
   padding-bottom: 15px;
-
-  
-  
 }
 
 .value {
@@ -45,9 +39,19 @@ table {
 }
 
 .portfolio__desc {
-  flex:1;
+  flex: 1;
+  display: flex;
+}
+
+.portfolio__desc-content {
   display: flex;
   flex-direction: column;
+  margin-left: 30px;
+ 
+
+  @include phones {
+    margin-left: 0;
+  }
 }
 
 .greetings {
@@ -81,21 +85,17 @@ table {
   font-size: 16px;
   line-height: 30px;
   color: rgba(255, 255, 255, 0.8);
-  
 
   &:before {
     content: "*";
     display: block;
-    position: absolute;
-    left: -40px;
-    transform: translate(-50%, 0);
-    top: 0;
     font-style: italic;
     font-size: 48px;
     line-height: 1;
-
-    /* red 30% */
-
+    padding: 0 3% 8% 0;
     color: rgba(219, 2, 0, 0.3);
+    position: absolute;
+    right: 100%;
+    top: 0;
   }
 }
