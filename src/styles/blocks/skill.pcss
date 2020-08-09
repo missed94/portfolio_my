@@ -2,34 +2,45 @@
   position: relative;
   width: 166px;
   height: 166px;
-  
+}
+
+.skills {
+margin-bottom: 147px;
+}
+
+.skills__item {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.skills-row__title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1;
+  color: #222427;
+  margin-bottom: 26px;
 }
 
 .skills-row-list {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  //margin-bottom: 50px;
+  margin-left: -4%;
 }
 .skills-row__item {
-    margin-right: 25px;
+  margin-left: 4%;
 
-    &:last-child {
+  /* &:last-child {
         margin-right: 0;
-    }
+    } */
 }
 
-
-
-.skills-row__title {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 33px;
-  color: #222427;
-}
 
 .skill__circle {
   fill: transparent;
- 
 
   &--layer--under {
     stroke: #eaeaea;
