@@ -80,19 +80,21 @@ block content
           .works__content 
             .works-preview
               .works-preview__pictures(data-slide="2")
-                +image("content/preview_1.jpg")
-                .works-preview__thumbs
-                  ul.thumbs
-                    - for (var i = 1; i < 4; i++)
-                      li.thumbs__item 
-                        a(href="").thumbs__link
-                          +image(`content/preview_${i}.jpg`,"thumb")               
-                .works-preview__btns
-                  .square-btns
-                    button(type="button").square-btns__item.square-btns__item--next 
-                      +icon('arrow-down', 'arrow-next')              
-                    button(type="button").square-btns__item.square-btns__item--prev
-                      +icon('arrow-down', 'arrow-prev')               
+                .works-preview__pictures-content
+                  .works-preview__pictures-container
+                    +image("content/preview_1.jpg", "works-preview__full-pic")
+                  .works-preview__thumbs
+                    ul.thumbs
+                      - for (var i = 1; i < 4; i++)
+                        li.thumbs__item 
+                          a(href="").thumbs__link
+                            +image(`content/preview_${i}.jpg`,"thumb")               
+                  .works-preview__btns
+                    .square-btns
+                      button(type="button").square-btns__item.square-btns__item--next 
+                        +icon('arrow-down', 'arrow-next')              
+                      button(type="button").square-btns__item.square-btns__item--prev
+                        +icon('arrow-down', 'arrow-prev')               
               .works-preview__info
                 - var tags = ["HTML","CSS","JavaScript"] 
                 ul.tags
