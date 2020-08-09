@@ -9,16 +9,21 @@ block content
               header.header
                 .logo-wrapper
                   h3.logo ВА
-                +menu('menu',["Обо мне", "Навыки", "Работы", "Отзывы"]) 
+                +menu('header-menu',["Обо мне", "Навыки", "Работы", "Отзывы"])
                 .socials
                     ul.socials__list
                       each social in ['insta', 'vk', 'github', 'envelope']
                         li.socials__item
                           a(href="#" class=`socials__link .social__link_${social}`)
                             +icon(`${social}`, 'social-icon')
+                .hamburger
+                  .hamburger-wrapper
+                    a(href="#").hamburger-menu__link
+                      +image('content/menu.png', 'hamburger-icon' )            
               .hero__title
-                p Личный сайт #[br] веб разработчика              
-                h1.hero__title-text Владимир Астаханов
+                .hero__title-content
+                  p Личный сайт #[br] веб разработчика              
+                  h1.hero__title-text Владимир Астаханов
 
 
               .scroll__btn
@@ -165,7 +170,7 @@ block content
             p.footer__name ВЛАДИМИР АСТАХАНОВ
             p.footer__personal-site Личный сайт веб-разработчика
         .footer__content
-          +menu('menu',["Обо мне", "Навыки", "Работы", "Отзывы"])
+          +menu('footer-menu',["Обо мне", "Навыки", "Работы", "Отзывы"])
           .footer__content-wrapper  
             .footer__social-block
               .footer__socials-block__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool 
