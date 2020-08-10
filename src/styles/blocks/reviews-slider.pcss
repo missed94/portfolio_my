@@ -1,35 +1,42 @@
-
 .slider-header {
-  
 }
 
 .slider__header-wrapper {
   display: flex;
   margin-bottom: 95px;
-  padding-top: 140px;
   align-items: center;
+
+  @include phones {
+flex-direction: column;
+justify-content: center;
+margin-bottom: 60px;
+
+  }
 }
 
 .slider__buttons {
+  display: flex;
 }
 
-
 .slider__content-wrapper {
+  max-width: 950px;
+  overflow: hidden;
 
+  @includes tablets {
+    width: 50%;
+
+  }
 }
 .slider__content {
   display: flex;
-  padding-right: 29%;
-  padding-bottom: 226px;
-  
 }
 .slider__item {
   flex-shrink: 0;
-  
-  width: 55%;
-  display: flex;
-  
-  
 
-  
+  width: 50%;
+  display: flex;
+
+  @include tablets {
+    width: 100%;
+  }
 }

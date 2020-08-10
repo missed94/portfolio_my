@@ -1,7 +1,13 @@
 .works {
-  padding-top: 140px;
-  padding-bottom: 209px;
-  background-color: #F8F8F8;
+  padding-top: 100px;
+  padding-bottom: 350px;
+  background-color: #f8f8f8;
+
+  @include desktop {
+    padding-top: 10%;
+    padding-bottom: 15%; 
+    
+  }
 }
 
 .works-preview {
@@ -10,41 +16,53 @@
 }
 
 .works-title {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
-
 
 .works-preview__pictures {
   position: relative;
   width: 66%;
+  max-width: 975px;
   margin-right: 150px;
   z-index: 10;
   height: 355px;
 
+  @include desktop {
+    
+    max-width: 39.8125rem;
+  }
+
   &:before {
     content: attr(data-slide);
-    bottom: 0%;
+    bottom: -21%;
     position: absolute;
     line-height: 1;
-    font-size: 25rem;
+    font-size: 400px;
     right: 0;
     font-weight: 800;
-    color: rgba(65,76,99,.5);
+    color: rgba(65, 76, 99, 0.5);
     -webkit-transform: translateX(50%);
     transform: translateX(67%);
     z-index: -1;
-  }
 
-  
+    @include desktop {
+      font-size: 300px; 
+      bottom: 19%;
+    }
+  }
 }
 
 .works-preview__pictures-content {
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  //overflow: hidden;
+
+  &:before {
+    content: "";
+    display: block;
+    /* 16:9 Aspect Ratio */
+    padding-top: 56.25%;
+  }
 }
 
 .works-preview__pictures-container {
@@ -52,7 +70,7 @@
   top: 0;
   right: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 
 .works-preview__full-pic {
@@ -65,7 +83,12 @@
   position: absolute;
   right: 0;
   bottom: 10.74%;
-  //height: 65px;
+  max-width: 732px;
+  width: 72%;
+
+  @include desktop {
+    max-width: 464px;
+  } 
 }
 
 .works-preview__btns {

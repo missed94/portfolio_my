@@ -6,31 +6,50 @@
   margin-right: 30px;
   width: 100%;
 
+
+  @include tablets {
+    
+    padding-left: 12%;
+  }
+
+  @include phones {
+    
+   padding: 0;
+   margin: 0;
+  }
   /* flex-direction:column; */
- // justify-content: space-between;
+  // justify-content: space-between;
 
   &:before {
     content: "";
     display: block;
     width: 18%;
     height: 37%;
-    opacity: .05;
-    background: svg-load('quote.svg', fill=#FFFFFF) top center / contain no-repeat;
+    opacity: 0.05;
+    background: svg-load("quote.svg", fill=#FFFFFF) top center / contain
+      no-repeat;
     position: absolute;
     top: 0;
     left: 0;
+
+    @include tablets {
+      width: 10%;
+      height: 20%;
+    }
+
+
+    @include phones {
+      display: none;
+    }
   }
 }
-
 
 .quote__content {
   position: relative;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  
-
 }
 
 .quote__text {

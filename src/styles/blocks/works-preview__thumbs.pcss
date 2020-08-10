@@ -4,17 +4,22 @@
 }
 
 .thumbs__item {
-  width: 116px;
+  width: 183px;
   transition: 0.2s;
   /* border: 2px solid transparent; */
   &.active,
   &:hover {
     outline: 2px solid #dc9322;
     z-index: 2;
+
+    @include desktop {
+      width: 116px;
+    }
   }
 }
 
 .thumbs__link {
+  display: block;
 }
 
 .thumb {
