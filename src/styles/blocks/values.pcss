@@ -1,39 +1,54 @@
 .values {
-        position: relative;
-        //padding: 125px 0;
-        
-        &:before {
-            content:"";
-            width: 28%;
-            height: 950px;
-            position: absolute;
-            background: url("~images/content/guitar1200.png") left center / contain no-repeat;
-            left: 0;
-            top:0%; 
-        }
+  position: relative;
+  padding: 5% 0 15% 0;
+  //padding: 125px 0;
+  &:before {
+    content: "";
+    width: 35%;
+    height: 1380px;
+    position: absolute;
+    background: url("~images/content/guitar1800.png") left center / contain
+      no-repeat;
+    left: 0;
+    top: -52%;
+  }
+
+  @include desktop {
+    &:before {
+      content: "";
+      width: 28%;
+      height: 950px;
+      position: absolute;
+      background: url("~images/content/guitar1200.png") left center / contain
+        no-repeat;
+      left: 0;
+      top: 0%;
+    }
+  }
 }
 
 .values__container {
-
 }
 
 .values__wrapper {
-position: relative;
+  position: relative;
 }
 
-.values__weidget-container {
-  
-}
+
 .values__title {
   margin-bottom: 82px;
   display: flex;
-  justify-content: center; 
-  padding-top: 255px; 
+  justify-content: center;
 }
 
 .values__title-container {
-  width: 56%;
-  margin-left: 0;  
+  width: 41%;
+  margin-left: 159px;
+
+  @include desktop {
+    width: 54%;
+    margin-left: 0;
+  }
 }
 
 .values__title-text {
@@ -52,11 +67,11 @@ position: relative;
 }
 
 .values__widget {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
-
 .values__widget-container {
-  width: 66%;
+  width: 68%;
+  max-width: 821px;
 }

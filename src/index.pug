@@ -4,18 +4,18 @@ extends ./main.layout.pug
 block content
   .maincontent 
     .welcome-section
-          section.hero
+          section.hero#hero
             .container.hero__container
               header.header
                 .logo-wrapper
                   h3.logo ВА
-                +menu('header-menu',["Обо мне", "Навыки", "Работы", "Отзывы"])
+                +menu('header-menu',["Обо мне", "Навыки", "Работы", "Отзывы"],)
                 .socials
                     ul.socials__list
                       each social in ['insta', 'vk', 'github', 'envelope']
                         li.socials__item
                           a(href="#" class=`socials__link .social__link_${social}`)
-                            +icon(`${social}`, 'social-icon')
+                              +icon(`${social}`, 'social-icon')  
                 .hamburger
                   .hamburger-wrapper
                     a(href="#").hamburger-menu__link
@@ -31,7 +31,7 @@ block content
                   a(href="#" class='scroll__btn-link') Скролл
                     span.arrow-wrapper
                       +icon('scroll', 'scroll-down')
-          section.about-section
+          section.about-section#about
               .container.about__container
                 .about__user-wrapper
                   .about__user
@@ -54,7 +54,7 @@ block content
       .triangle
         svg(viewBox="0 0 1000 140" preserveAspectRatio="none").triangle__shape
           polygon(points="0,0 0,70 800,140 1000,70 1000,0")
-      section.values
+      section.values#values
         .container.values__container
           .values__wrapper
             .values__title
@@ -85,7 +85,7 @@ block content
                                       stop(offset="0%" stop-color="#5500f2")
                                       stop(offset="100%" stop-color="#8f00ef")
                                   h5.skill__title #{skill}  
-      section.works 
+      section.works#works 
         .container
           .section-title.works-title Мои Работы
           .works__content 
@@ -96,7 +96,7 @@ block content
                     +image("content/preview_1.jpg", "works-preview__full-pic")
                   .works-preview__thumbs
                     ul.thumbs
-                      - for (var i = 1; i < 4; i++)
+                      - for (var i = 1; i < 5; i++)
                         li.thumbs__item 
                           a(href="").thumbs__link
                             +image(`content/preview_${i}.jpg`,"thumb")               
@@ -120,7 +120,7 @@ block content
                     .link-icon__wrapper
                       +icon("link", "link-icon") 
                     div Посмотреть сайт     
-      section.reviews
+      section.reviews#reviews
         .container
           .reviews__content-wrapper
             .reviews__slider

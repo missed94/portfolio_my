@@ -1,29 +1,37 @@
 .square-btns__item {
   position: relative;
   display: block;
-  width: 35px;
-  height: 35px;
+  width: 53px;
+  height: 53px;
   background: #333c49;
+
+  @include desktop {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .arrow-next,
 .arrow-prev {
-  width: 11px;
-  height: 11px;
+  width: 17px;
+  height: 17px;
   fill: #717883;
   position: absolute;
 
   &:hover {
-    fill: #FFFFFF;
+    fill: #ffffff;
+  }
+
+  @include desktop {
+    width: 11px;
+    height: 11px;
   }
 }
 
 .arrow-prev {
-  transform:translate(-50%,-50%) rotate(180deg);
-  
+  transform: translate(-50%, -50%) rotate(180deg);
 }
 
-
 .arrow-next {
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
