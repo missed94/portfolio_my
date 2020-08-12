@@ -2,10 +2,18 @@
   position: relative;
   width: 166px;
   height: 166px;
+
+  @include tablets {
+    width: 132px;
+    height: 132px;
+  }
+  @include phones {
+    width: 115px;
+    height: 115px;
+  }
 }
 
 .skills {
-
 }
 
 .skills__item {
@@ -22,6 +30,15 @@
   line-height: 1;
   color: #222427;
   margin-bottom: 26px;
+
+  @include tablets {
+    display: none;
+  }
+  @include phones {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+  }
 }
 
 .skills-row-list {
@@ -29,6 +46,11 @@
   flex-wrap: wrap;
   //margin-bottom: 50px;
   margin-left: -4%;
+  justify-content: center;
+
+  @include tablets {
+    margin-left: 0;
+  }
 }
 .skills-row__item {
   margin-left: 4%;
@@ -37,7 +59,6 @@
         margin-right: 0;
     } */
 }
-
 
 .skill__circle {
   fill: transparent;
@@ -63,4 +84,8 @@
   font-size: 18px;
   line-height: 25px;
   color: rgba(16, 0, 34, 0.5);
+
+  @include tablets {
+    font-size: 14px;
+  }
 }

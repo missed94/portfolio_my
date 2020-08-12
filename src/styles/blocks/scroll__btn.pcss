@@ -1,30 +1,38 @@
 .scroll__btn {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    /* @include tablets {
+  /* @include tablets {
         display:none;
       } */
-    /* margin-bottom: 175px; */
+  /* margin-bottom: 175px; */
 }
 
 .scroll__btn-link {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 30px;
-    color: #FFFFFF;
-    display: block;
-    
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.scroll__btn-wrapper {
+  @include tablets {
+    display: none;
+  }
 }
 
 .arrow-wrapper {
-    width: 13px;
-    height: 13px;
+  width: 18px;
+  height: 18px;
+  display: block;
+  margin-left: 15px;
 }
 
 .scroll-down {
-    width: 13px;
-    height: 13px;
-    fill:#FFFFFF;
-    margin-left: 15px;
+  width: 18px;
+  height: 18px;
+  fill: #ffffff;
+  display: block;
 }

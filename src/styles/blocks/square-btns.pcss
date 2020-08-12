@@ -9,6 +9,10 @@
     width: 35px;
     height: 35px;
   }
+  @include phones {
+    width: 55px;
+    height: 55px;
+  }
 }
 
 .arrow-next,
@@ -17,6 +21,7 @@
   height: 17px;
   fill: #717883;
   position: absolute;
+  transition: .2s;
 
   &:hover {
     fill: #ffffff;
@@ -25,6 +30,10 @@
   @include desktop {
     width: 11px;
     height: 11px;
+  }
+  @include phones {
+    width: 17px;
+    height: 17px;
   }
 }
 

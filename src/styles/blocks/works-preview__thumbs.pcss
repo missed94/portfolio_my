@@ -1,6 +1,10 @@
 .thumbs {
   display: flex;
   position: relative;
+  
+  @include phones {
+    display: none;
+  }
 }
 
 .thumbs__item {

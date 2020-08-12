@@ -1,29 +1,58 @@
 .footer {
   background: #100022;
-
 }
-
 
 .footer__container {
- 
 }
-
 
 .footer__content-block {
   display: flex;
   justify-content: space-between;
   padding-bottom: 30px;
   padding-top: 50px;
+
+  @include tablets {
+    flex-direction:column;
+  }
 }
 .footer__sign {
-  width: 22%;
+  width: 29%;
   display: flex;
+  margin-right: 10px;
+
+  @include desktop {
+    flex-direction: column;
+    width: 24%;
+  }
+
+
+  @include tablets {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 45px;
+  }
   //justify-content: space-between;
-  flex-direction:column;
+}
+
+.footer__user-info {
+  width: 42%;
+
+  @include desktop {
+    width: 68%;
+  }
 }
 
 .footer__col {
-//flex:1;
+  //flex:1;
+  margin-right: 3.5rem;
+  width: 40%;
+  max-width: 165px;
+  @include desktop {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  
 }
 
 .footer__year {
@@ -32,6 +61,7 @@
   line-height: 1;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 20px;
+  white-space: nowrap;
 }
 .footer__name {
   font-weight: bold;
@@ -47,17 +77,37 @@
   color: rgba(255, 255, 255, 0.5);
 }
 .footer__content {
-  width: 75%;
+  width: 71%;
   margin-top: 10px;
+
+  @include desktop {
+    width: 76%;
+  }
+  @include tablets {
+    width: 100%;
+  }
 }
 .footer__social-block {
-  width: 39%;
-  margin-right: 25px;
+  width: 33%;
+
+  @include desktop {
+    width: 40%;
+  }
+
+  @include tablets {
+    width: 100%;
+  }
 }
 
 .footer__content-wrapper {
   display: flex;
   margin-top: 40px;
+  justify-content: space-between;
+
+  @include tablets {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 }
 .footer__socials-block__text {
   font-weight: normal;
@@ -70,7 +120,7 @@
 }
 .socials__list {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
 .socials__item.footer__socials-item {
   width: 50px;
@@ -78,7 +128,7 @@
   margin-right: 20px;
   margin-bottom: 10px;
 
-  &:last-child{
+  &:last-child {
     margin-right: 0;
   }
 }
@@ -102,7 +152,14 @@
   fill: rgba(255, 255, 255, 0.3);
 }
 .footer__quote {
-  width: 50%;
+  width: 45%;
+  @include desktop {
+    width: 52%;
+  }
+
+  @include tablets {
+    width: 100%;
+  }
 }
 .footer__quote-text {
   font-weight: normal;
@@ -116,5 +173,5 @@
   font-size: 16px;
   line-height: 30px;
   font-style: italic;
-  color: #FFFFFF;
+  color: #ffffff;
 }
