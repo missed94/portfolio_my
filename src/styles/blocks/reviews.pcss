@@ -1,11 +1,23 @@
 .reviews {
-  min-height: 724px;
+  min-height: 930px;
   background: url("~images/content/reviews_bgc.jpg") center center / cover
     no-repeat;
-  padding: 10% 0 10% 0;
+  padding: 120px 0 0 0;
+
+  
+  @include desktop {
+    min-height: 724px;
+  }
+
+  @include tablets {
+    min-height: 600px;
+    padding: 100px 0 0 0;
+  }
+
 
   @include phones {
-    padding: 80px 10%;
+    padding: 20% 0 0 0;
+    min-height: 512px;
   }
 }
 

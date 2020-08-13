@@ -1,9 +1,10 @@
 .slider-header {
+  margin-bottom: 2.9375rem;
 }
 
 .slider__header-wrapper {
   display: flex;
-  margin-bottom: 95px;
+  
   align-items: center;
 
   @include phones {
@@ -19,17 +20,60 @@ margin-bottom: 60px;
 }
 
 .slider__content-wrapper {
-  max-width: 950px;
+  position: relative;
+
+  @include phones {
+    
+    
+    
+   &:before { 
+    content: "";
+    display: block;
+    width: 10%;
+    height: 20%;
+    opacity: .05;
+    background: svg-load("quote.svg", fill=#FFFFFF) top/contain no-repeat;
+    position: absolute;
+    top: 0;
+    right: 100%;
+   }
+  }
+  
+
+  
+}
+
+
+.slider__content {
+  max-width: 57.375rem;
+  display: flex;
   overflow: hidden;
 
-  @includes tablets {
-    width: 50%;
+  @include tablets {
+    width: 58%;
+    min-width: 403px;
 
   }
+  @include phones {
+    width: 88%;
+    min-width: 0;
+    position: relative;
+    
+   &:before { 
+    content: "";
+    display: block;
+    width: 10%;
+    height: 20%;
+    opacity: .05;
+    background: svg-load("quote.svg", fill=#FFFFFF) top/contain no-repeat;
+    position: absolute;
+    top: 0;
+    right: 100%;
+   }
+  }
 }
-.slider__content {
-  display: flex;
-}
+
+
 .slider__item {
   flex-shrink: 0;
 
@@ -39,4 +83,13 @@ margin-bottom: 60px;
   @include tablets {
     width: 100%;
   }
+  
+
+&:last-child {
+
+  .quote {
+    margin-right: 0;
+  }
+}
+
 }

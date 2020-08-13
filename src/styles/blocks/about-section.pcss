@@ -3,23 +3,28 @@
 }
 
 .about__container {
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .about__user-wrapper {
   display: flex;
   max-width: 1000px;
 
-  @include phones {
+  @include tablets
+   {
     flex-direction: column;
+    align-items: center;
   }
 }
 
 .about__user {
-  width: 41.5%; 
-  
+  min-width: 286px;
   @include phones {
     width: 100%;
+  }
+  @include tablets {
+    max-width: 286px;
+    margin-bottom: 45px;
   }
 }

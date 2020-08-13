@@ -1,20 +1,20 @@
 .works {
   padding-top: 100px;
-  padding-bottom: 350px;
+  padding-bottom: 210px;
   background-color: #f8f8f8;
 
   @include desktop {
-    padding-top: 10%;
-    padding-bottom: 15%; 
+    padding-top: 7%;
+    padding-bottom: 12%; 
     
   }
   @include tablets {
-    padding-top: 13%;
+    padding-top: 10%;
     padding-bottom: 17%;
   }
   @include phones {
-    padding-top: 27%;
-    padding-bottom: 25%; 
+    padding-top: 17%;
+    padding-bottom: 16%;
   }
 }
 
@@ -50,11 +50,12 @@
   max-width: 975px;
   margin-right: 150px;
   z-index: 10;
-  height: 355px;
+  min-height: 355px;
 
   @include desktop {
     
     max-width: 39.8125rem;
+    margin-right: 6rem;
   }
 
   @include tablets {
@@ -63,19 +64,20 @@
     margin-right: 0;
     max-width: 637px;
     margin-bottom: 65px;
+    min-height: 14.1875rem;
   }
 
   @include phones {
-    height: 185px;
+    min-height: 11.1875rem;
     width: 118%;
     transform: translateX(-8%);
-    margin-bottom: 100px;
+    margin-bottom: 60px;
   }
 
 
   &:before {
     content: attr(data-slide);
-    bottom: -21%;
+    top: 6%;
     position: absolute;
     line-height: 1;
     font-size: 400px;
@@ -87,8 +89,12 @@
     z-index: -1;
 
     @include desktop {
-      font-size: 300px; 
+      font-size: 23vw; 
       bottom: 19%;
+    }
+
+    @include tablets {
+      font-size: 35vw; 
     }
 
     
