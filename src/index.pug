@@ -37,7 +37,7 @@ block content
               .hero__title
                 .hero__title-content
                   p Личный сайт #[br] веб разработчика              
-                  h1.hero__title-text Владимир Астаханов
+                  h1.hero__title-text Иван #[br] Филатов
 
 
               .scroll__btn
@@ -52,7 +52,7 @@ block content
                     .user
                       .user__avatar
                         .user__avatar-style
-                          +image('content/user.jpg', 'user-pic')
+                          +image('content/me.jpg', 'user-pic')
                       table.basic-data
                         each item in obj
                           tr.basic__data-row
@@ -61,7 +61,7 @@ block content
                   .portfolio__desc
                     .portfolio__desc-content
                         p.greetings Привет, меня зовут 
-                        h2.object-name Владимир Астаханов
+                        h2.object-name Иван Филатов
                         p.about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                         p.footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
     .middle-section
@@ -109,12 +109,12 @@ block content
               .works-preview__pictures(data-slide="2")
                 .works-preview__pictures-content
                   .works-preview__pictures-container
-                    +image("content/preview_1.jpg", "works-preview__full-pic")
+                    +image("content/preview_2.jpg", "works-preview__full-pic")
                   .works-preview__thumbs
                     ul.thumbs
                       - for (var i = 1; i < 5; i++)
-                        li.thumbs__item 
-                          button(type="button").thumbs__link
+                        li.thumbs__item
+                          button(type="button").thumbs__btn
                             +image(`content/preview_${i}.jpg`,"thumb")               
                   .works-preview__btns
                     .square-btns
@@ -184,7 +184,7 @@ block content
           .footer__col
             .footer__year © 2020
           .footer__user-info
-            p.footer__name ВЛАДИМИР АСТАХАНОВ
+            p.footer__name ИВАН ФИЛАТОВ
             p.footer__personal-site Личный сайт веб-разработчика
         .footer__content
           +menu('footer-menu',menu)

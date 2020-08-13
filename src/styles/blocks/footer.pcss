@@ -10,9 +10,10 @@
   justify-content: space-between;
   padding-bottom: 30px;
   padding-top: 50px;
+  max-width: 1400px;
 
   @include tablets {
-    flex-direction:column;
+    flex-direction: column;
   }
 }
 .footer__sign {
@@ -23,6 +24,10 @@
   @include desktop {
     flex-direction: column;
     width: 24%;
+  }
+
+  @include desktop1000 {
+    width: 31%;
   }
 
 
@@ -51,8 +56,6 @@
     margin-right: 0;
     width: 100%;
   }
-
-  
 }
 
 .footer__year {
@@ -77,21 +80,33 @@
   color: rgba(255, 255, 255, 0.5);
 }
 .footer__content {
-  width: 71%;
+  width: 68%;
   margin-top: 10px;
+  max-width: 900px;
 
   @include desktop {
     width: 76%;
   }
+
+  @include desktop1000 {
+    width: 69%;
+  }
+
   @include tablets {
     width: 100%;
   }
 }
 .footer__social-block {
-  width: 33%;
+  flex-basis: 50%;
+  margin-right: 15px;
+  max-width: 310px;
 
   @include desktop {
-    width: 40%;
+    /* width: 40%; */
+  }
+
+  @include desktop1000 {
+    max-width: 100%;
   }
 
   @include tablets {
@@ -103,6 +118,10 @@
   display: flex;
   margin-top: 40px;
   justify-content: space-between;
+
+  @include desktop1000 {
+    flex-direction: column;
+  }
 
   @include tablets {
     flex-direction: column;
@@ -152,9 +171,14 @@
   fill: rgba(255, 255, 255, 0.3);
 }
 .footer__quote {
-  width: 45%;
-  @include desktop {
+  flex-basis: 50%;
+  max-width: 430px;
+  /*  @include desktop {
     width: 52%;
+  } */
+
+  @include desktop1000 {
+    max-width: 100%;
   }
 
   @include tablets {

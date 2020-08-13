@@ -4,6 +4,10 @@
 }
 .user-display__avatar {
   margin-right: 30px;
+
+  @include phones {
+    margin-right: 10px;
+  }
 }
 .user-display__avatar-style {
   width: 75px;
@@ -17,13 +21,24 @@
 .user-display__name {
   font-weight: bold;
   font-size: 18px;
-  line-height: 25px;
+  line-height: 1;
   color: #ffffff;
   margin-bottom: 20px;
+
+  @include phones {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 }
 .user-display__occ {
   font-weight: 600;
   font-size: 16px;
-  line-height: 22px;
+  line-height: 1;
   color: rgba(255, 255, 255, 0.5);
+
+  @include phones {
+    font-size: 14px;
+  }
 }
+
+
