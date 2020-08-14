@@ -4,66 +4,66 @@ extends ./main.layout.pug
 block content
   .maincontent 
     .welcome-section
-          section.hero#hero
-            .container.hero__container
-              header.header
-                .logo-wrapper
-                  h3.logo ВА
-                -
-                  var menu = [
-                    {href: '#about', text:'Обо мне'},
-                    {href: '#values', text:'Навыки'},
-                    {href: '#works', text:'Работы'},
-                    {href: '#reviews', text:'Отзывы'},
-                  ]  
-                +menu('header-menu', menu)
-                .socials
-                    -
-                      var socials = [
-                        {href: 'https://instagram.com/', text:'insta'},
-                        {href: 'https://vk.com/', text:'vk'},
-                        {href: 'https://github.com/', text:'github'},
-                        {href: 'https://mail.google.com/', text:'envelope'},
-                      ]
-                    ul.socials__list
-                      each social in socials
-                        li.socials__item
-                          a(href=`${social.href}` class=`socials__link .social__link_${social.text}` target='_blank')
-                              +icon(`${social.text}`, 'social-icon')  
-                .hamburger
-                  .hamburger-wrapper
-                    a(href="#").hamburger-menu__link
-                      +image('content/menu.png', 'hamburger-icon' )            
-              .hero__title
-                .hero__title-content
-                  p Личный сайт #[br] веб разработчика              
-                  h1.hero__title-text Иван #[br] Филатов
+      section.hero#hero
+        .container.hero__container
+          header.header
+            .logo-wrapper
+              h3.logo ИФ
+            -
+              var menu = [
+                {href: '#about', text:'Обо мне'},
+                {href: '#values', text:'Навыки'},
+                {href: '#works', text:'Работы'},
+                {href: '#reviews', text:'Отзывы'},
+              ]  
+            +menu('header-menu', menu)
+            .socials
+              -
+                var socials = [
+                  {href: 'https://instagram.com/', text:'insta'},
+                  {href: 'https://vk.com/', text:'vk'},
+                  {href: 'https://github.com/', text:'github'},
+                  {href: 'https://mail.google.com/', text:'envelope'},
+                ]
+              ul.socials__list
+                each social in socials
+                  li.socials__item
+                    a(href=`${social.href}` class=`socials__link .social__link_${social.text}` target='_blank')
+                      +icon(`${social.text}`, 'social-icon')  
+            .hamburger
+              .hamburger-wrapper
+                a(href="#").hamburger-menu__link
+                  +image('content/menu.png', 'hamburger-icon' )            
+          .hero__title
+            .hero__title-content
+              p Личный сайт #[br] веб разработчика              
+              h1.hero__title-text Иван #[br] Филатов
 
 
-              .scroll__btn
-                .scroll__btn-wrapper
-                  a(href="#about" class='scroll__btn-link') Скролл #[span.arrow-wrapper: +icon('scroll', 'scroll-down')]
-                    
-                      
-          section.about-section#about
-              .container.about__container
-                .about__user-wrapper
-                  .about__user
-                    .user
-                      .user__avatar
-                        .user__avatar-style
-                          +image('content/me.jpg', 'user-pic')
-                      table.basic-data
-                        each item in obj
-                          tr.basic__data-row
-                            td.category #{item[0]}
-                            td.value #{item[1]}
-                  .portfolio__desc
-                    .portfolio__desc-content
-                        p.greetings Привет, меня зовут 
-                        h2.object-name Иван Филатов
-                        p.about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                        p.footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+          .scroll__btn
+            .scroll__btn-wrapper
+              a(href="#about" class='scroll__btn-link') Скролл #[span.arrow-wrapper: +icon('scroll', 'scroll-down')]
+
+
+      section.about-section#about
+        .container.about__container
+          .about__user-wrapper
+            .about__user
+              .user
+                .user__avatar
+                  .user__avatar-style
+                    +image('content/me.jpg', 'user-pic')
+                table.basic-data
+                  each item in obj
+                    tr.basic__data-row
+                      td.category #{item[0]}
+                      td.value #{item[1]}
+            .portfolio__desc
+              .portfolio__desc-content
+                p.greetings Привет, меня зовут 
+                h2.object-name Иван Филатов
+                p.about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                p.footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
     .middle-section
       .triangle
         svg(viewBox="0 0 1000 140" preserveAspectRatio="none").triangle__shape
@@ -78,29 +78,8 @@ block content
                   p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!    
             .values__widget
               .values__widget-container
-                -
-                  var skillCategories = [
-                    ["Frontend", ["HTML","CSS","Javascript","Vue"]],
-                    ["Workflow", ["GIT","Terminal","Gulp","Webpack"]],
-                  ];
-                ul.skills
-                  svg(style="width:0; height:0; position: absolute;" aria-hidden="true")
-                    linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
-                                      stop(offset="0%" stop-color="#4D87EE")
-                                      stop(offset="100%" stop-color="#345CE9")
-                  each category in skillCategories
-                    li.skills__item
-                      .skills-row 
-                        h4.skills-row__title #{category[0]}
-                        ul.skills-row-list
-                            each skill in category[1]
-                              li.skills-row__item
-                                .skill
-                                  svg(viewBox="0 0 100 100").skill__circle-shape
-                                    circle(cx="50" cy="50" r="40").skill__circle.skill__circle--layer--under
-                                    circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform="rotate(180 50 50)").skill__circle.skill__circle--layer--above
-                                    
-                                  h5.skill__title #{skill}  
+                #skills-component
+
       section.works#works 
         .container
           .section-title.works-title Мои Работы
@@ -139,44 +118,8 @@ block content
       section.reviews#reviews
         .container
           .reviews__content-wrapper
-            .reviews__slider
-              .slider-header
-                .slider__header-wrapper
-                  .reviews-title Что обо мне говорят
-                  .slider__buttons
-                    button(type="button").round-btn.round-btn--pointer--right
-                      +icon('arrow-down', 'round-btn_arrow-prev-icon')  
-                    button(type="button").round-btn.round-btn--pointer--left
-                      +icon('arrow-down', 'round-btn_arrow-next-icon')
-              .slider__content-wrapper          
-                ul.slider__content
-                  li.slider__item
-                    .quote
-                      .quote__content  
-                        .quote__text
-                          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                        .quote__user
-                          .user-display  
-                            .user-display__avatar
-                              .user-display__avatar-style
-                                +image('content/reviewer1.png', 'user-display__pic')
-                            .user-display__data
-                              .user-display__name Дмитрий Ковальчук
-                              .user-display__occ Основатель LoftSchool
-                  li.slider__item
-                    .quote 
-                      .quote__content
-                        .quote__text
-                          p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                        .quote__user
-                          .user-display  
-                            .user-display__avatar
-                              .user-display__avatar-style
-                                +image('content/reviewer2.png', 'user-display__pic')
-                            .user-display__data
-                              .user-display__name Владимир Сабанцев
-                              .user-display__occ Преподаватель 
-                        
+            #slider-component
+
   footer.footer 
     .container.footer__container
       .footer__content-block
@@ -202,8 +145,8 @@ block content
               p.footer__quote-author Martin Golding       
 
 
-                              
-                      
-                      
-          
+
+
+
+
 
