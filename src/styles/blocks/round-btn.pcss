@@ -2,9 +2,28 @@
   position: relative;
   width: 53px;
   height: 53px;
-  border: 2px solid #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 50%;
   background: none;
+  transition: 0.3s;
+
+
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 1);
+    .round-btn_arrow-next-icon,
+    .round-btn_arrow-prev-icon {
+      fill: rgba(255, 255, 255, 1);
+    }
+  }
+  &:focus {
+    border-color: rgba(255, 255, 255, 1);
+
+    .round-btn_arrow-next-icon,
+    .round-btn_arrow-prev-icon {
+      fill: rgba(255, 255, 255, 1);
+    }
+  }
 }
 .round-btn--pointer--right {
   margin-right: 20px;
@@ -19,6 +38,8 @@
   height: 17px;
   fill: white;
   transform: translate(-50%, -50%);
+  fill: rgba(255, 255, 255, 0.7);
+  transition: 0.3s;
 }
 
 .round-btn_arrow-prev-icon {

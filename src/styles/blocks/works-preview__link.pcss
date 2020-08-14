@@ -1,6 +1,8 @@
 .works-preview__link{
     display: flex;
 
+    
+
     @include tablets {
       
       justify-content: center;
@@ -37,6 +39,14 @@
     font-size: 18px;
     line-height: 25px;
     color: #586ED3;
+
+    &:hover {
+      color:#4A82EE;
+
+      .link-icon {
+        fill:#4A82EE;
+      }
+    }
 
     @include tablets {
       font-size: 14px;
