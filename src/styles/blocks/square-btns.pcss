@@ -5,6 +5,12 @@
   height: 53px;
   background: #333c49;
 
+  &:focus {
+    .arrow-next, .arrow-prev {
+      fill: #ffffff;
+    }
+  }
+
   @include desktop {
     width: 35px;
     height: 35px;
@@ -21,7 +27,7 @@
   height: 17px;
   fill: #717883;
   position: absolute;
-  transition: .2s;
+  transition: 0.2s;
 
   &:hover {
     fill: #ffffff;
