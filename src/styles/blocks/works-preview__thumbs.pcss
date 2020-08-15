@@ -1,7 +1,9 @@
 .thumbs {
   display: flex;
   position: relative;
+
   
+
   @include phones {
     display: none;
   }
@@ -9,12 +11,17 @@
 
 .thumbs__item {
   width: 183px;
+
+  &.active {
+    .thumbs__btn {
+      outline: 2px solid #dc9322;
+      z-index: 3;
+    }
+  }
   /* border: 2px solid transparent; */
-  
 
   @include desktop {
     width: 116px;
-    
   }
 }
 
@@ -24,13 +31,11 @@
   z-index: 2;
   transition: 0.4s;
 
-  &.active,
   &:hover {
-    /* outline: 2px solid #dc9322;
-    z-index: 3; */
-
+    outline: 2px solid #dc9322;
+    z-index:3;
   }
-  
+
   &:focus {
     outline: 2px solid #dc9322;
     z-index: 3;
