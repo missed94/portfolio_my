@@ -4,7 +4,8 @@ script(type="text/x-template")#preview-container
       :currentWork="currentWork",
       :works="works",
       :currentIndex="currentIndex",
-      @slide="slide"
+      @slide="slide", 
+      @changeThumb="changeThumb" 
     )
     info(
       :currentWork="currentWork"
@@ -16,8 +17,10 @@ script(type="text/x-template")#preview-display
       .works-preview__pictures-container
         img(:src="currentWork.photo").works-preview__full-pic
       .works-preview__thumbs
-        thumbs(:works="reversedWorks"
-        :currentWork="currentWork")
+        thumbs(:works="Works"
+        :currentWork="currentWork"
+         @changeThumb="$emit('changeThumb', $event)"
+        )
       .works-preview__btns
         btns(
           @slide="$emit('slide', $event)"
@@ -27,10 +30,16 @@ script(type="text/x-template")#preview-thumbs
   ul.thumbs
     li.thumbs__item(
       v-for="slide in works" :key="slide.id"
-      :class="{active: currentWork.id == slide.id}"  
+      :class="{active: currentWork.id == slide.id}" 
+      @click="$emit('changeThumb')"
       )
-      button(type="button").thumbs__btn
+      button(
+        type="button"
+        
+        ).thumbs__btn
         img(:src="slide.photo").thumb
+
+        
 
 
 script(type="text/x-template")#preview-btns
