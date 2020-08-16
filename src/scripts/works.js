@@ -1,9 +1,12 @@
 import Vue from "vue";
 
+
+
 const thumbs = {
   props: ["works", "currentWork"],
   template: "#preview-thumbs",
 };
+
 
 const btns = {
   template: "#preview-btns",
@@ -14,7 +17,7 @@ const display = {
   template: "#preview-display",
   components: { thumbs, btns },
   computed: {
-    reversedWorks() {
+    Works() {
       const works = [...this.works];
       return works.slice(0, 4);
     },
@@ -94,6 +97,10 @@ new Vue({
           break;
       }
     },
+
+    changeThumb(e) {
+      console.log("click");
+    }
   },
 
   created() {
