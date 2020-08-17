@@ -1,0 +1,182 @@
+var pug = require("!../node_modules/pug-runtime/index.js");
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;;
+    var locals_for_with = (locals || {});
+    
+    (function (menu, socials) {
+      pug_mixins["icon"] = pug_interp = function(name, className){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+var icon = require(`images/icons/${name}.svg`).default;
+pug_html = pug_html + "\u003Csvg" + (pug.attr("class", pug.classes([className], [true]), false, true)+pug.attr("viewBox", icon.viewBox, true, true)+" preserveAspectRatio=\"none\"") + "\u003E\u003Cuse" + (pug.attr("xlink:href", `sprite.svg#${icon.id.replace('-usage', '')}`, true, true)) + "\u003E\u003C\u002Fuse\u003E\u003C\u002Fsvg\u003E";
+};
+pug_mixins["image"] = pug_interp = function(path, className){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+pug_html = pug_html + "\u003Cimg" + (pug.attr("class", pug.classes([className], [true]), false, true)+pug.attr("src", require(`images/${path}`).default, true, true)) + "\u003E";
+};
+pug_mixins["menu"] = pug_interp = function(className, items){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+pug_html = pug_html + "\u003Cnav" + (pug.attr("class", pug.classes([className], [true]), false, true)) + "\u003E\u003Cul" + (pug.attr("class", pug.classes([`${className}__list`], [true]), false, true)) + "\u003E";
+// iterate items
+;(function(){
+  var $$obj = items;
+  if ('number' == typeof $$obj.length) {
+      for (var pug_index0 = 0, $$l = $$obj.length; pug_index0 < $$l; pug_index0++) {
+        var item = $$obj[pug_index0];
+pug_html = pug_html + "\u003Cli" + (pug.attr("class", pug.classes([`${className}__item`], [true]), false, true)) + "\u003E\u003Ca" + (pug.attr("class", pug.classes([`${className}__link`], [true]), false, true)+pug.attr("href", `${item.href}`, true, true)) + "\u003E" + (pug.escape(null == (pug_interp = item.text) ? "" : pug_interp)) + "\u003C\u002Fa\u003E\u003C\u002Fli\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var pug_index0 in $$obj) {
+      $$l++;
+      var item = $$obj[pug_index0];
+pug_html = pug_html + "\u003Cli" + (pug.attr("class", pug.classes([`${className}__item`], [true]), false, true)) + "\u003E\u003Ca" + (pug.attr("class", pug.classes([`${className}__link`], [true]), false, true)+pug.attr("href", `${item.href}`, true, true)) + "\u003E" + (pug.escape(null == (pug_interp = item.text) ? "" : pug_interp)) + "\u003C\u002Fa\u003E\u003C\u002Fli\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003C\u002Ful\u003E\u003C\u002Fnav\u003E";
+};
+const obj = [
+  ["Проживаю:", "Новосибирск"],
+  ["Возраст:", "26 лет"],
+  ["Родился:", "12 апреля 1994"],
+];
+
+pug_html = pug_html + "\u003C!DOCTYPE html\u003E\u003Chtml lang=\"ru\"\u003E\u003Chead\u003E\u003Cmeta charset=\"UTF-8\"\u003E\u003Cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003E\u003Ctitle\u003EPortfolio | main page\u003C\u002Ftitle\u003E\u003C\u002Fhead\u003E\u003Cbody\u003E\u003Cdiv class=\"wrapper\"\u003E\u003Cdiv class=\"maincontent\"\u003E \u003Cdiv class=\"welcome-section\"\u003E\u003Csection class=\"hero\" id=\"hero\"\u003E\u003Cdiv class=\"container hero__container\"\u003E\u003Cheader class=\"header\"\u003E\u003Cdiv class=\"logo-wrapper\"\u003E\u003Ch3 class=\"logo\"\u003EИФ\u003C\u002Fh3\u003E\u003C\u002Fdiv\u003E";
+var menu = [
+  {href: '#about', text:'Обо мне'},
+  {href: '#values', text:'Навыки'},
+  {href: '#works', text:'Работы'},
+  {href: '#reviews', text:'Отзывы'},
+]  
+pug_mixins["menu"]('header-menu', menu);
+pug_html = pug_html + "\u003Cdiv class=\"socials\"\u003E";
+var socials = [
+  {href: 'https://instagram.com/', text:'insta'},
+  {href: 'https://vk.com/', text:'vk'},
+  {href: 'https://github.com/', text:'github'},
+  {href: 'https://mail.google.com/', text:'envelope'},
+]
+pug_html = pug_html + "\u003Cul class=\"socials__list\"\u003E";
+// iterate socials
+;(function(){
+  var $$obj = socials;
+  if ('number' == typeof $$obj.length) {
+      for (var pug_index1 = 0, $$l = $$obj.length; pug_index1 < $$l; pug_index1++) {
+        var social = $$obj[pug_index1];
+pug_html = pug_html + "\u003Cli class=\"socials__item\"\u003E\u003Ca" + (pug.attr("class", pug.classes([`socials__link .social__link_${social.text}`], [true]), false, true)+pug.attr("href", `${social.href}`, true, true)+" target=\"_blank\"") + "\u003E";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + " ";
+}
+}, `${social.text}`, 'social-icon');
+pug_html = pug_html + "\u003C\u002Fa\u003E\u003C\u002Fli\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var pug_index1 in $$obj) {
+      $$l++;
+      var social = $$obj[pug_index1];
+pug_html = pug_html + "\u003Cli class=\"socials__item\"\u003E\u003Ca" + (pug.attr("class", pug.classes([`socials__link .social__link_${social.text}`], [true]), false, true)+pug.attr("href", `${social.href}`, true, true)+" target=\"_blank\"") + "\u003E";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + " ";
+}
+}, `${social.text}`, 'social-icon');
+pug_html = pug_html + "\u003C\u002Fa\u003E\u003C\u002Fli\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003C\u002Ful\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"hamburger\"\u003E\u003Cdiv class=\"hamburger-wrapper\"\u003E\u003Ca class=\"hamburger-menu__link\" href=\"#\"\u003E";
+pug_mixins["image"].call({
+block: function(){
+pug_html = pug_html + "           ";
+}
+}, 'content/menu.png', 'hamburger-icon' );
+pug_html = pug_html + "\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fheader\u003E\u003Cdiv class=\"hero__title\"\u003E\u003Cdiv class=\"hero__title-content\"\u003E\u003Cp\u003EЛичный сайт \u003Cbr\u003E веб разработчика              \u003C\u002Fp\u003E\u003Ch1 class=\"hero__title-text\"\u003EИван \u003Cbr\u003E Филатов\u003C\u002Fh1\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"scroll__btn\"\u003E\u003Cdiv class=\"scroll__btn-wrapper\"\u003E\u003Ca class=\"scroll__btn-link\" href=\"#about\"\u003EСкролл \u003Cspan class=\"arrow-wrapper\"\u003E";
+pug_mixins["icon"]('scroll', 'scroll-down');
+pug_html = pug_html + "\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fsection\u003E\u003Csection class=\"about-section\" id=\"about\"\u003E\u003Cdiv class=\"container about__container\"\u003E\u003Cdiv class=\"about__user-wrapper\"\u003E\u003Cdiv class=\"about__user\"\u003E\u003Cdiv class=\"user\"\u003E\u003Cdiv class=\"user__avatar\"\u003E\u003Cdiv class=\"user__avatar-style\"\u003E";
+pug_mixins["image"]('content/me.jpg', 'user-pic');
+pug_html = pug_html + "\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Ctable class=\"basic-data\"\u003E";
+// iterate obj
+;(function(){
+  var $$obj = obj;
+  if ('number' == typeof $$obj.length) {
+      for (var pug_index2 = 0, $$l = $$obj.length; pug_index2 < $$l; pug_index2++) {
+        var item = $$obj[pug_index2];
+pug_html = pug_html + "\u003Ctr class=\"basic__data-row\"\u003E\u003Ctd class=\"category\"\u003E" + (pug.escape(null == (pug_interp = item[0]) ? "" : pug_interp)) + "\u003C\u002Ftd\u003E\u003Ctd class=\"value\"\u003E" + (pug.escape(null == (pug_interp = item[1]) ? "" : pug_interp)) + "\u003C\u002Ftd\u003E\u003C\u002Ftr\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var pug_index2 in $$obj) {
+      $$l++;
+      var item = $$obj[pug_index2];
+pug_html = pug_html + "\u003Ctr class=\"basic__data-row\"\u003E\u003Ctd class=\"category\"\u003E" + (pug.escape(null == (pug_interp = item[0]) ? "" : pug_interp)) + "\u003C\u002Ftd\u003E\u003Ctd class=\"value\"\u003E" + (pug.escape(null == (pug_interp = item[1]) ? "" : pug_interp)) + "\u003C\u002Ftd\u003E\u003C\u002Ftr\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003C\u002Ftable\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"portfolio__desc\"\u003E\u003Cdiv class=\"portfolio__desc-content\"\u003E\u003Cp class=\"greetings\"\u003EПривет, меня зовут \u003C\u002Fp\u003E\u003Ch2 class=\"object-name\"\u003EИван Филатов\u003C\u002Fh2\u003E\u003Cp class=\"about\"\u003EЯ занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.\u003C\u002Fp\u003E\u003Cp class=\"footnote\"\u003EЭтот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!\u003C\u002Fp\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fsection\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"middle-section\"\u003E\u003Cdiv class=\"triangle\"\u003E\u003Csvg class=\"triangle__shape\" viewBox=\"0 0 1000 140\" preserveAspectRatio=\"none\"\u003E\u003Cpolygon points=\"0,0 0,70 800,140 1000,70 1000,0\"\u003E\u003C\u002Fpolygon\u003E\u003C\u002Fsvg\u003E\u003C\u002Fdiv\u003E\u003Csection class=\"values\" id=\"values\"\u003E\u003Cdiv class=\"container values__container\"\u003E\u003Cdiv class=\"values__wrapper\"\u003E\u003Cdiv class=\"values__title\"\u003E\u003Cdiv class=\"values__title-container\"\u003E \u003Ch3 class=\"values__title-text\"\u003EЧем я могу быть полезен вам\u003C\u002Fh3\u003E\u003Cdiv class=\"values__content\"\u003E\u003Cp\u003EЭтот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!    \u003C\u002Fp\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"values__widget\"\u003E\u003Cdiv class=\"values__widget-container\"\u003E\u003Cdiv id=\"skills-component\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fsection\u003E\u003Csection class=\"works\" id=\"works\"\u003E \u003Cdiv class=\"container\"\u003E\u003Cdiv class=\"section-title works-title\"\u003EМои Работы\u003C\u002Fdiv\u003E\u003Cdiv class=\"works__content\"\u003E \u003Cdiv id=\"preview-component\"\u003E \u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fsection\u003E\u003Csection class=\"reviews\" id=\"reviews\"\u003E\u003Cdiv class=\"container\"\u003E\u003Cdiv class=\"reviews__content-wrapper\"\u003E\u003Cdiv id=\"slider-component\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fsection\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cfooter class=\"footer\"\u003E \u003Cdiv class=\"container footer__container\"\u003E\u003Cdiv class=\"footer__content-block\"\u003E\u003Cdiv class=\"footer__sign\"\u003E\u003Cdiv class=\"footer__col\"\u003E\u003Cdiv class=\"footer__year\"\u003E© 2020\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"footer__user-info\"\u003E\u003Cp class=\"footer__name\"\u003EИВАН ФИЛАТОВ\u003C\u002Fp\u003E\u003Cp class=\"footer__personal-site\"\u003EЛичный сайт веб-разработчика\u003C\u002Fp\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"footer__content\"\u003E";
+pug_mixins["menu"]('footer-menu',menu);
+pug_html = pug_html + "\u003Cdiv class=\"footer__content-wrapper\"\u003E \u003Cdiv class=\"footer__social-block\"\u003E\u003Cdiv class=\"footer__socials-block__text\"\u003EЭтот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool \u003C\u002Fdiv\u003E\u003Cdiv class=\"footer__socials\"\u003E\u003Cul class=\"socials__list\"\u003E";
+// iterate socials
+;(function(){
+  var $$obj = socials;
+  if ('number' == typeof $$obj.length) {
+      for (var pug_index3 = 0, $$l = $$obj.length; pug_index3 < $$l; pug_index3++) {
+        var social = $$obj[pug_index3];
+pug_html = pug_html + "\u003Cli class=\"socials__item footer__socials-item\"\u003E\u003Ca" + (pug.attr("class", pug.classes([`footer__socials-link .social__link_${social.text}`], [true]), false, true)+pug.attr("href", `${social.href}`, true, true)+" target=\"_blank\"") + "\u003E";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + "                       ";
+}
+}, `${social.text}`, 'social__icon footer__social-icon');
+pug_html = pug_html + "\u003C\u002Fa\u003E\u003C\u002Fli\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var pug_index3 in $$obj) {
+      $$l++;
+      var social = $$obj[pug_index3];
+pug_html = pug_html + "\u003Cli class=\"socials__item footer__socials-item\"\u003E\u003Ca" + (pug.attr("class", pug.classes([`footer__socials-link .social__link_${social.text}`], [true]), false, true)+pug.attr("href", `${social.href}`, true, true)+" target=\"_blank\"") + "\u003E";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + "                       ";
+}
+}, `${social.text}`, 'social__icon footer__social-icon');
+pug_html = pug_html + "\u003C\u002Fa\u003E\u003C\u002Fli\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003C\u002Ful\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"footer__quote\"\u003E\u003Cp class=\"footer__quote-text\"\u003EВсегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете\u003C\u002Fp\u003E\u003Cp class=\"footer__quote-author\"\u003EMartin Golding       \u003C\u002Fp\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Ffooter\u003E\u003C\u002Fdiv\u003E" + (null == (pug_interp = require("./templates/components/skills.pug").call(this, locals)) ? "" : pug_interp) + "\u003Cscript type=\"text\u002Fx-template\" id=\"slider-container\"\u003E\u003Cdiv class=\"reviews__slider\"\u003E\u003Cdiv class=\"slider-header\"\u003E\u003Cdiv class=\"slider__header-wrapper\"\u003E\u003Cdiv class=\"reviews-title\"\u003EЧто обо мне говорят\u003C\u002Fdiv\u003E\u003Cdiv class=\"slider__buttons\"\u003E\u003Cbutton class=\"round-btn round-btn--pointer--right\" type=\"button\" @click=\"slide('prev')\" :disabled=\"isBeginning\"\u003E";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + " ";
+}
+}, 'arrow-down', 'round-btn_arrow-prev-icon');
+pug_html = pug_html + "\u003C\u002Fbutton\u003E\u003Cbutton class=\"round-btn round-btn--pointer--left\" type=\"button\" @click=\"slide('next')\" :disabled=\"isEnd\"\u003E";
+pug_mixins["icon"]('arrow-down', 'round-btn_arrow-next-icon');
+pug_html = pug_html + "\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"slider__content-wrapper\"\u003E\u003Cswiper ref=\"slider\" :options=\"sliderOptions\"\u003E         \u003Cswiper-slide v-for=\"review in reviews\" :key=\"review.id\"\u003E\u003Cdiv class=\"quote\"\u003E\u003Cdiv class=\"quote__content\"\u003E \u003Cdiv class=\"quote__text\"\u003E\u003Cp\u003E{{review.text}}\u003C\u002Fp\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"quote__user\"\u003E\u003Cdiv class=\"user-display\"\u003E \u003Cdiv class=\"user-display__avatar\"\u003E\u003Cdiv class=\"user-display__avatar-style\"\u003E\u003Cimg class=\"user-display__pic\" :src=\"review.pic\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"user-display__data\"\u003E\u003Cdiv class=\"user-display__name\"\u003E{{review.name}}\u003C\u002Fdiv\u003E\u003Cdiv class=\"user-display__occ\"\u003E{{review.occ}}\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fswiper-slide\u003E\u003C\u002Fswiper\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fscript\u003E\u003Cscript type=\"text\u002Fx-template\" id=\"preview-container\"\u003E\u003Cdiv class=\"works-preview\"\u003E \u003Cdisplay :currentWork=\"currentWork\" :works=\"works\" :currentIndex=\"currentIndex\" @slide=\"slide\" @changeThumb=\"changeThumb\"\u003E\u003C\u002Fdisplay\u003E\u003Cinfo :currentWork=\"currentWork\"\u003E\u003C\u002Finfo\u003E\u003C\u002Fdiv\u003E\u003C\u002Fscript\u003E\u003Cscript type=\"text\u002Fx-template\" id=\"preview-display\"\u003E\u003Cdiv class=\"works-preview__pictures\" :data-slide=\"currentIndex + 1\"\u003E\u003Cdiv class=\"works-preview__pictures-content\"\u003E\u003Cdiv class=\"works-preview__pictures-container\"\u003E\u003Cimg class=\"works-preview__full-pic\" :src=\"currentWork.photo\"\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"works-preview__thumbs\"\u003E\u003Cthumbs :works=\"Works\" :currentWork=\"currentWork\" @slide=\"$emit('slide', $event)\"\u003E\u003C\u002Fthumbs\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"works-preview__btns\"\u003E\u003Cbtns @slide=\"$emit('slide', $event)\"\u003E\u003C\u002Fbtns\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fscript\u003E\u003Cscript type=\"text\u002Fx-template\" id=\"preview-thumbs\"\u003E\u003Cul class=\"thumbs\"\u003E\u003Cli class=\"thumbs__item\" v-for=\"(slide, index) in works\" :key=\"slide.id\" :class=\"{active: currentWork.id == slide.id}\" @click=\"$emit('slide', index)\"\u003E\u003Cbutton class=\"thumbs__btn\" type=\"button\"\u003E\u003Cimg class=\"thumb\" :src=\"slide.photo\"\u003E\u003C\u002Fbutton\u003E\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fscript\u003E\u003Cscript type=\"text\u002Fx-template\" id=\"preview-btns\"\u003E\u003Cdiv class=\"square-btns\"\u003E\u003Cbutton class=\"square-btns__item square-btns__item--next\" type=\"button\" @click=\"$emit('slide', 'next')\"\u003E ";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + "             ";
+}
+}, 'arrow-down', 'arrow-next');
+pug_html = pug_html + "\u003C\u002Fbutton\u003E\u003Cbutton class=\"square-btns__item square-btns__item--prev\" type=\"button\" @click=\"$emit('slide', 'prev')\"\u003E";
+pug_mixins["icon"]('arrow-down', 'arrow-prev');
+pug_html = pug_html + "\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E\u003C\u002Fscript\u003E\u003Cscript type=\"text\u002Fx-template\" id=\"preview-info\"\u003E\u003Cdiv class=\"works-preview__info\"\u003E\u003Cdiv class=\"works-preview__tags\"\u003E\u003Ctags :tags=\"tagsArray\"\u003E\u003C\u002Ftags\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"works-preview__title\"\u003E{{currentWork.title}}\u003C\u002Fdiv\u003E\u003Cdiv class=\"works-preview__desc\"\u003E \u003Cp\u003E{{currentWork.desc}}\u003C\u002Fp\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"works-preview__link\"\u003E \u003Ca class=\"iconed-link\" :href=\"currentWork.link\" target=\"_blank\"\u003E \u003Cdiv class=\"link-icon__wrapper\"\u003E";
+pug_mixins["icon"].call({
+block: function(){
+pug_html = pug_html + " ";
+}
+}, "link", "link-icon");
+pug_html = pug_html + "\u003C\u002Fdiv\u003E\u003Cdiv\u003EПосмотреть сайт\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fscript\u003E\u003Cscript type=\"text\u002Fx-template\" id=\"preview-tags\"\u003E\u003Cul class=\"tags\"\u003E\u003Cli class=\"tags__item\" v-for=\"tag in tags\"\u003E\u003Cdiv class=\"tag\"\u003E{{tag}}\u003C\u002Fdiv\u003E\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fscript\u003E\u003C\u002Fbody\u003E\u003C\u002Fhtml\u003E";
+    }.call(this, "menu" in locals_for_with ?
+        locals_for_with.menu :
+        typeof menu !== 'undefined' ? menu : undefined, "socials" in locals_for_with ?
+        locals_for_with.socials :
+        typeof socials !== 'undefined' ? socials : undefined));
+    ;;return pug_html;};
+module.exports = template;
