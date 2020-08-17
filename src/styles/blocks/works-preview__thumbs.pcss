@@ -1,6 +1,9 @@
 .thumbs {
   display: flex;
   position: relative;
+  align-items: center;
+  height: 100%;
+  border: 2px solid transparent;
 
   
 
@@ -10,36 +13,34 @@
 }
 
 .thumbs__item {
-  width: 183px;
+  flex-shrink: 0;
+  width: calc(100% / 3);
+  outline: 2px solid transparent;
 
   &.active {
     .thumbs__btn {
       outline: 2px solid #dc9322;
-      z-index: 3;
+      z-index: 4;
     }
   }
   /* border: 2px solid transparent; */
 
   @include desktop {
-    width: 116px;
+    width: calc(100% / 4);
   }
 }
 
 .thumbs__btn {
   position: relative;
   display: block;
-  z-index: 2;
+  z-index: 3;
   transition: 0.4s;
 
   &:hover {
     outline: 2px solid #dc9322;
-    z-index:3;
+    z-index:4;
   }
 
-  &:focus {
-    outline: 2px solid #dc9322;
-    z-index: 3;
-  }
 }
 
 .thumb {

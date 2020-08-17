@@ -19,7 +19,7 @@ const display = {
   computed: {
     Works() {
       const works = [...this.works];
-      return works.slice(0, 4);
+      return works.slice(0, 5);
     },
   },
 };
@@ -54,7 +54,7 @@ new Vue({
 
   computed: {
     currentWork() {
-      return this.works[0];
+      return this.works[this.currentIndex];
     },
   },
 
@@ -86,15 +86,14 @@ new Vue({
       const lastItem = this.works[this.works.length - 1];
       switch (direction) {
         case "next":
-          this.works.push(this.works[0]);
-          this.works.shift();
           this.currentIndex++;
           break;
         case "prev":
-          this.works.unshift(lastItem);
-          this.works.pop();
           this.currentIndex--;
           break;
+        default:
+          this.currentIndex = direction;
+          break;  
       }
     },
 
