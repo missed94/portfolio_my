@@ -19,7 +19,7 @@ script(type="text/x-template")#preview-display
       .works-preview__thumbs
         thumbs(:works="Works"
         :currentWork="currentWork"
-         @changeThumb="$emit('changeThumb', $event)"
+         @slide="$emit('slide', $event)"
         )
       .works-preview__btns
         btns(
@@ -29,9 +29,9 @@ script(type="text/x-template")#preview-display
 script(type="text/x-template")#preview-thumbs
   ul.thumbs
     li.thumbs__item(
-      v-for="slide in works" :key="slide.id"
-      :class="{active: currentWork.id == slide.id}" 
-      @click="$emit('changeThumb')"
+        v-for="(slide, index) in works" :key="slide.id"
+        :class="{active: currentWork.id == slide.id}" 
+        @click="$emit('slide', index)"
       )
       button(
         type="button"
