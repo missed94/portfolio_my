@@ -1,0 +1,95 @@
+.full-menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  left: 100%;
+  transition: 0.5s;
+  z-index: 5;
+ 
+
+  /* @include tablets {
+    left: 0;
+  } */
+}
+
+.background-block {
+  background: url("~images/content/full-menu-bgc.jpg") center center / cover
+    no-repeat;
+  height: 100%;
+  position: relative;
+}
+
+.logo-wrapper-full-menu {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.logo-wrapper-text {
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1;
+  color: white;
+}
+
+.content-block {
+  position: absolute;
+  right: 0;
+  width: 43%;
+  background: #ffffff;
+  height: 100%;
+ 
+  padding: 31px 30px 0 46px;
+  @include phones {
+    width: 100%;
+  }
+}
+
+
+.content-block-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 30rem;
+
+  @include phones {
+    min-height: 25rem;
+  }
+}
+
+.close-wrapper {
+  align-self:flex-end;
+}
+
+.close-btn {
+  color: transparent;
+  background-color: transparent;
+}
+
+.full-menu__nav__link {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #414C63;
+}
+
+.full-menu__nav__item {
+  margin-bottom: 20px;
+}
+
+
+.socials-wrapper {
+  align-self: center;
+
+  @include tablets {
+    align-self: flex-start;
+  }
+}
+
+.socials__item-full-menu {
+  margin-bottom: 20px;
+}
+.social-icon-full-menu {
+  fill: #414c63;
+}

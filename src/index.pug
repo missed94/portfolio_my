@@ -85,8 +85,8 @@ block content
           .section-title.works-title Мои Работы
           .works__content 
             #preview-component  
-            
-               
+
+
       section.reviews#reviews
         .container
           .reviews__content-wrapper
@@ -115,7 +115,38 @@ block content
             .footer__quote
               p.footer__quote-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
               p.footer__quote-author Martin Golding       
-
+  .full-menu
+    .background-block
+      .logo-wrapper-full-menu
+        h3.logo-wrapper-text ИФ
+    
+      .content-block
+        .content-block-wrapper
+          .close-wrapper
+            button.close-btn
+              +image('content/close.png', 'close-icon')
+          .menu-wrapper
+            -
+              var menu = [
+                {href: '#about', text:'Обо мне'},
+                {href: '#values', text:'Навыки'},
+                {href: '#works', text:'Работы'},
+                {href: '#reviews', text:'Отзывы'},
+              ]  
+            +menu('full-menu__nav', menu)
+          .socials-wrapper
+            -
+              var socials = [
+                {href: 'https://instagram.com/', text:'insta'},
+                {href: 'https://vk.com/', text:'vk'},
+                {href: 'https://github.com/', text:'github'},
+                {href: 'https://mail.google.com/', text:'envelope'},
+              ]
+            ul.socials__list
+              each social in socials
+                li.socials__item.socials__item-full-menu
+                  a(href=`${social.href}` class=`socials__link .social__link_${social.text}` target='_blank')
+                    +icon(`${social.text}`, 'social-icon-full-menu') 
 
 
 
