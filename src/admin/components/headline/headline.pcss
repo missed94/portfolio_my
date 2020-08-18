@@ -1,0 +1,47 @@
+@import "../../../styles/mixins.pcss";
+
+.headline-component {
+  background: #43436b;
+  padding: 15px 0 15px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  
+}
+
+.title-text {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+  @include phones {
+    display: none;
+  }
+  
+}
+.btns {
+}
+.btn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+
+  @include phones {
+    display: none;
+  }
+}
