@@ -1,12 +1,9 @@
 import Vue from "vue";
 
-
-
 const thumbs = {
   props: ["works", "currentWork"],
   template: "#preview-thumbs",
 };
-
 
 const btns = {
   template: "#preview-btns",
@@ -83,7 +80,7 @@ new Vue({
     },
 
     slide(direction) {
-      const lastItem = this.works[this.works.length - 1];
+      
       switch (direction) {
         case "next":
           this.currentIndex++;
@@ -93,13 +90,9 @@ new Vue({
           break;
         default:
           this.currentIndex = direction;
-          break;  
+          break;
       }
     },
-
-    changeThumb(e) {
-      console.log("click");
-    }
   },
 
   created() {

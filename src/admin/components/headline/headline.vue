@@ -4,7 +4,6 @@
       <div class="title">
         <slot />
         <h5 class="title-text">{{title}} </h5>
-        
       </div>
       <div class="btns">
         <button type="button" class="btn">Выйти</button>
@@ -14,6 +13,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     title: String,

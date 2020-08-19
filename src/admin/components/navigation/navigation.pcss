@@ -1,0 +1,51 @@
+@import "../../../styles/mixins.pcss";
+
+.navigation-component {
+}
+.container {
+}
+.navigation {
+}
+
+.navigation__list {
+  display: flex;
+
+  @include phones {
+    justify-content: center;
+  }
+
+}
+.navigation__item {
+}
+
+
+
+.navigation__item.active {
+  button {
+    border-bottom: 3px solid #383BCF;
+  }
+}
+
+
+
+.navigation__btn {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  color: #383BCF;
+  background-color: transparent;
+  padding: 25px;
+  transition: .2s;
+
+
+  
+
+  &:hover {
+    border-bottom: 3px solid #383BCF;
+  }
+
+
+  @include phones {
+    font-size: 14px;
+  }
+}
