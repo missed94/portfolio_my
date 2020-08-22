@@ -1,41 +1,70 @@
 <template>
   <div class="maincontent">
     <headline title="Панель администрирования">
-      <avatar src="https://picsum.photos/300/300" title="Иван Филатов" />
+      <user />
     </headline>
     <navigation></navigation>
-    <blockContent title="Блок 'Обо мне'">
-      <iconed-btn slot="button" type="iconed" />
-      <card slot="content" title="Заголовок">
-        <h1 slot="title"></h1> 
-        <h1 slot="content">Содержание</h1> 
-      </card> 
-      <card slot="content" title="Заголовок">
-        <h1 slot="title"></h1> 
-        <h1 slot="content">Содержание</h1> 
-      </card> 
-    </blockContent>
+    <div class="page-content">
+      <div class="container">
+        <div class="page-content__header">
+          <div class="title">Блок "Обо мне"</div>
+          <iconed-btn 
+          type="iconed" 
+          title="Добавить группу" 
+          v-if="emptyCatIsShown == false"
+          @click="emptyCatIsShown = true"/>
+        </div>
+        <ul class="skills">
+          <li class="item" v-if="emptyCatIsShown"> 
+            <category 
+              @remove="emptyCatIsShown = false"
+              empty
+            />
+          </li>
+          <li class="item" v-for="category in categories" 
+          :key="category.id"> 
+            <category 
+              :title="category.category"
+              :skills="category.skills"
+            />
+          </li>
+        
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
 import "../styles/main.pcss";
-import avatar from "./components/avatar/avatar";
 import headline from "./components/headline/headline";
+import user from "./components/user/user";
 import navigation from "./components/navigation/navigation";
-import card from "./components/card/card";
-import blockContent from "./components/blockContent/blockContent";
 import iconedBtn from "./components/button/types/iconedBtn/iconedBtn";
+import category from "./components/category/category";
 
 export default {
   components: {
-    avatar,
     headline,
-    card,
+    user,
     navigation,
-    blockContent,
     iconedBtn,
+    category
   },
+
+  data() {
+    return {
+      categories: [],
+      emptyCatIsShown: false
+    }
+  },
+
+  created() {
+    this.categories = require("./../data/categories.json")
+  }
 };
 </script>
+
+<style lang="postcss" scoped src="./app.pcss">
+</style>

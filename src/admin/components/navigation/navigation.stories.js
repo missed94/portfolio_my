@@ -9,7 +9,7 @@ export default {
 export const defaultView = () => ({
 components: {navigation},  
 template:`
-  <navigation title="Array">
+  <navigation>
   </navigation>
 `
 })

@@ -1,9 +1,9 @@
 <template>
   <div class="headline-component">
-    <div class="container">
+    <div class="container header-container">
+      <slot />
       <div class="title">
-        <slot />
-        <h5 class="title-text">{{title}} </h5>
+        {{title}}
       </div>
       <div class="btns">
         <button type="button" class="btn">Выйти</button>

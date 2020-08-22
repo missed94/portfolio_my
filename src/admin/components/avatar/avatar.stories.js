@@ -15,11 +15,7 @@ export const defaultView = () => ({
     }
   },
   template: `
-    <avatar 
-    :size="size" 
-    src="https://picsum.photos/300/300" 
-    title="User Name"
-    />
+    <avatar :size="size" src="https://picsum.photos/300/300" />
   `,
 });
 

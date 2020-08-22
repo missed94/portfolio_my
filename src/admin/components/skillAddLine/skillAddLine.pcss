@@ -1,0 +1,41 @@
+.skillAddLine-component {
+  display: flex;
+  align-items: center;
+  position: relative;
+ // justify-content: space-between;
+
+ &.blocked {
+  filter: grayscale(100%);
+  pointer-events: none;
+
+  &:after {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+ }
+  
+}
+
+.new-percent {
+  //margin-left: auto;
+  margin-right: 30px;
+  margin-left: 10px;
+  position: relative;
+
+  &:after {
+    content: "%";
+    position: absolute;
+    top: 9px;
+    right: 0;
+  }
+}
+
+.new-title {
+  flex:1;
+   
+}
+
