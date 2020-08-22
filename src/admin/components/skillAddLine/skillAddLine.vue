@@ -27,7 +27,7 @@
 <script>
 import input from "../input";
 //import button from "../button";
-import roundBtn from "../button/";
+import button from "../button/";
 
 
 export default {
@@ -37,7 +37,7 @@ export default {
 
   components: {
     appInput: input,
-    roundBtn
+    roundBtn:button
   }
 };
 </script> 
