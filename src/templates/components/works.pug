@@ -18,6 +18,7 @@ script(type="text/x-template")#preview-display
       .works-preview__thumbs
         thumbs(:works="Works"
         :currentWork="currentWork"
+        :currentIndex="currentIndex"
           @slide="$emit('slide', $event)"
           ref="thumb-container"
         )

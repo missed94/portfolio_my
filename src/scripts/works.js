@@ -1,8 +1,56 @@
 import Vue from "vue";
 
 const thumbs = {
-  props: ["works", "currentWork"],
+  props: ["works", "currentWork", "currentIndex"],
   template: "#preview-thumbs",
+  data() {
+    return {
+      viewThumb: 4,
+    }
+  },
+  
+
+  watch:  {
+    currentIndex() {
+
+      this.moveThumbList(this.currentIndex);
+
+    }
+  },
+
+  mounted() {
+    this.moveThumbList(this.currentIndex);
+  },
+
+  methods: {
+    moveThumbList(currentIndex) {
+      const stash = ((currentIndex + 1) - this.viewThumb) 
+
+     /*  console.log((stash + this.viewThumb)); */
+      /* console.log((currentIndex) - this.viewThumb); */
+
+     /*  const count = stash < 0 ? 0 : stash */
+
+      if (stash < 0) {
+        console.log(stash);
+      }
+
+      if (!currentIndex) {
+        return
+      }
+
+      if (currentIndex + 1 > this.viewThumb) {
+        this.$refs["thumbs-container"].style.transform = `translateX(-${25 * stash }%)`
+      }
+
+
+
+      /* console.log(currentIndex);
+      console.log(this.$refs["thumbs-container"]); */
+    }
+  }
+
+  
 };
 
 const btns = {
