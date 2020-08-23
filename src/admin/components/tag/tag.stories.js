@@ -20,3 +20,11 @@ defaultView.story = {
     ],
   },
 };
+
+
+export const interactiveView = () => ({
+  components: { tag },
+  template: `
+    <tag title="tag" interactive/>
+  `
+});
