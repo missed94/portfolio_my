@@ -3,7 +3,8 @@
   position: relative;
   align-items: center;
   height: 100%;
-  border: 2px solid transparent;
+  transition: .3s;
+  
 
   
 
@@ -15,7 +16,7 @@
 .thumbs__item {
   flex-shrink: 0;
   width: calc(100% / 3);
-  outline: 2px solid transparent;
+  border: 2px solid transparent;
 
   &.active {
     .thumbs__btn {
@@ -25,9 +26,9 @@
   }
   /* border: 2px solid transparent; */
 
-  @include desktop {
+  /* @include desktop {
     width: calc(100% / 4);
-  }
+  } */
 }
 
 .thumbs__btn {

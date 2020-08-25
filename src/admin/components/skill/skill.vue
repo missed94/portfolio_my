@@ -3,7 +3,7 @@
     <div class="title">{{skill.title}}</div>
     <div class="pre">{{skill.percent}}</div>
     <div class="button">
-      <icon symbol="pencil" class="btn" @click="editmode = true" grayscale />
+      <icon symbol="pencil" class="btn pencil" @click="editmode = true" grayscale />
       <icon symbol="trash" class="btn" @click="$emit('remove', skill.id)" grayscale />
     </div>
   </div>
@@ -13,7 +13,7 @@
     </div>
     <div class="pre">
        <app-input
-       v-model="currentSkill.percent"
+      v-model="currentSkill.percent"
       type="number"
       min="0"
       max="100"
@@ -21,7 +21,7 @@
     />
     </div>
     <div class="button">
-      <icon symbol="tick" class="btn" @click="$emit('approve', currentSkill)"/>
+      <icon symbol="tick" class="btn tick" @click="$emit('approve', currentSkill)"/>
       <icon symbol="cross" class="btn" @click="editmode = false"/>
     </div>
   </div>
@@ -31,6 +31,8 @@
 
 import input from "../input";
 import icon from "../icon";
+
+import {Validator} from 'simple-vue-validator';
 
 export default {
   props: {
@@ -46,7 +48,7 @@ export default {
       currentSkill: {
         id: 0,
         title: this.skill.title,
-        percent:this.skill.percent,
+        percent: this.skill.percent,
       }
     }
   },

@@ -6,22 +6,22 @@
           {
               "id":1,
               "title":"HTML",
-              "precent":50
+              "percent":50
           },
           {
               "id":2,
               "title":"CSS",
-              "precent":74
+              "percent":74
           },
           {
               "id":3,
               "title":"JavaScript",
-              "precent":20
+              "percent":20
           },
           {
               "id":4,
               "title":"Vue",
-              "precent":15
+              "percent":15
           }
       ]
   },
@@ -32,17 +32,17 @@
           {
               "id":1,
               "title":"Node.js",
-              "precent":33
+              "percent":33
           },
           {
               "id":2,
               "title":"PHP",
-              "precent":17
+              "percent":17
           },
           {
               "id":3,
               "title":"Mongodb",
-              "precent":48
+              "percent":48
           }
           
       ]
@@ -54,22 +54,22 @@
           {
               "id":1,
               "title":"GIT",
-              "precent":67
+              "percent":67
           },
           {
               "id":2,
               "title":"Terminal",
-              "precent":54
+              "percent":54
           },
           {
               "id":3,
               "title":"Gulp",
-              "precent":44
+              "percent":44
           },
           {
               "id":4,
               "title":"Webpack",
-              "precent":25
+              "percent":25
           }
       ]
   }

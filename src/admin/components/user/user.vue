@@ -15,7 +15,7 @@
 
     computed: {
       userPic() {
-        return require("../../../images/content/me.jpg").default;
+        return `/dist/${require("../../../images/content/me.jpg").default}`;
       },
     },
   };

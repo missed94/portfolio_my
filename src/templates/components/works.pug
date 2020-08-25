@@ -1,6 +1,8 @@
 script(type="text/x-template")#preview-container
   .works-preview 
     display(
+      :isEnd='isEnd'
+			:isBegin='isBegin'
       :currentWork="currentWork",
       :works="works",
       :currentIndex="currentIndex",
@@ -24,6 +26,8 @@ script(type="text/x-template")#preview-display
         )
       .works-preview__btns
         btns(
+          :isEnd='isEnd'
+			    :isBegin='isBegin'
           @slide="$emit('slide', $event)"
         )
 
@@ -46,11 +50,13 @@ script(type="text/x-template")#preview-thumbs
 script(type="text/x-template")#preview-btns
   .square-btns
     button(
+      :disabled="isEnd"
       type="button"
       @click= "$emit('slide', 'next')"
       ).square-btns__item.square-btns__item--next 
       +icon('arrow-down', 'arrow-next')              
     button(
+      :disabled="isBegin"
       type="button"
       @click="$emit('slide', 'prev')"
       ).square-btns__item.square-btns__item--prev

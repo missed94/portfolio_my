@@ -7,6 +7,8 @@
 .pre {
   margin-left: auto;
   margin-right: 60px;
+  position: relative;
+  
 }
 
 .button {
@@ -20,4 +22,26 @@
   }
 
   background: transparent;
+}
+
+.pencil {
+  position: relative;
+
+  &:before {
+    content: "%";
+    position: absolute;
+    top: 0;
+    right: 50px;
+  }
+}
+
+.tick {
+  position: relative;
+
+  &:before {
+    content: "%";
+    position: absolute;
+    top: 0;
+    right: 50px;
+  }
 }

@@ -16,11 +16,13 @@
           @keydown.native.enter="onApprove"
           autofocus="autofocus"
           no-side-paddings="no-side-paddings"
+          v-model="newCategory"
+          :errorMessage="validation.firstError('newCategory')"
         ></app-input>
       </div>
       <div class="buttons">
         <div class="button-icon">
-          <icon symbol="tick" @click="onApprove"></icon>
+          <icon symbol="tick" @click="onApprove, submit"></icon>
         </div>
         <div class="button-icon">
           <icon symbol="cross" @click="$emit('remove')"></icon>
@@ -31,7 +33,24 @@
 </template>
 
 <script>
+
+
+import {Validator} from 'simple-vue-validator';
+
+
+
+
 export default {
+  mixins: [require('simple-vue-validator').mixin],
+
+validators: {
+    'newCategory'(value) {
+      return Validator.value(value).required('Заполните').maxLength(20)
+    },
+
+    
+  },
+
   props: {
     value: {
       type: String,
@@ -48,7 +67,8 @@ export default {
   data() {
     return {
       editmode: this.editModeByDefault,
-      title: this.value
+      title: this.value,
+      newCategory: "",
     };
   },
   methods: {
@@ -58,8 +78,18 @@ export default {
       } else {
         this.$emit("approve", this.value);
       }
-    }
+    },
+
+    submit: function () {
+        this.$validate()
+          .then(function(success) {
+            if (success) {
+              alert('Validation succeeded!');
+            }
+          });
+      }
   },
+
   components: {
     icon: () => import("components/icon"),
     appInput: () => import("components/input")
