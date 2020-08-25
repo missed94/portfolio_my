@@ -29,8 +29,8 @@
 
 <script>
 
-import input from "../input";
-import icon from "../icon";
+import input from "../input/input";
+import icon from "../icon/icon";
 
 import {Validator} from 'simple-vue-validator';
 

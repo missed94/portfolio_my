@@ -35,6 +35,9 @@
 </template>
 
 <script>
+
+
+
 export default {
   inheritAttrs: false,
   props: {

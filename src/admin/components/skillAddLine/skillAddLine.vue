@@ -38,7 +38,7 @@
 
 
 <script>
-import input from "../input";
+import input from "../input/input";
 //import button from "../button";
 import roundBtn from "../button/types/roundBtn/roundBtn";
 
