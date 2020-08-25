@@ -30,7 +30,7 @@
 <script>
 
 import input from "../input/input";
-import icon from "../icon/icon";
+import icon from "../icon";
 
 import {Validator} from 'simple-vue-validator';
 
