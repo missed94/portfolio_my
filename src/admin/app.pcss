@@ -1,3 +1,5 @@
+@import "../styles/mixins.pcss";
+
 .maincontent {
   min-height: 100vh;
   display: flex;
@@ -31,9 +33,12 @@
 }
 
 .item {
-  width: calc(100% / 2 - 30px);
+  width: calc(100% / 3 - 25px);
   margin-right: 25px;
   margin-bottom: 25px;
 
+@include desktop {
+  width: calc(100% / 2 - 25px);
+}
 
 }
