@@ -15,6 +15,10 @@
   line-height: 1;
   color: rgba(255, 255, 255, 0.5);
   margin-left: 30px;
+
+  @include phones {
+    display:none
+  }
 }
 
 .btns {
@@ -29,6 +33,10 @@
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @include phones {
+    display: none;
   }
 
  

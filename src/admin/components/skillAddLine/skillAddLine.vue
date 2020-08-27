@@ -78,8 +78,8 @@ export default {
       submit: function () {
         this.$validate()
           .then(function(success) {
-            if (success) {
-              alert('Validation succeeded!');
+            if (success == false) {
+              return;
             }
           });
       }

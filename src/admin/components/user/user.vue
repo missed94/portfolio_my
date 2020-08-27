@@ -1,7 +1,13 @@
 <template>
   <div class="user-component">
      <avatar size="2.7" :src="userPic" />
-     <div class="username">Иван Филатов</div>
+     <div class="username-wrapper">
+       <div class="username">Иван Филатов</div>
+       <div class="btns">
+        <button type="button" class="btn">Выйти</button>
+      </div>
+     </div>
+     
   </div>
 </template>
 
@@ -15,7 +21,7 @@
 
     computed: {
       userPic() {
-        return `/dist/${require("../../../images/content/me.jpg").default}`;
+        return require("../../../images/content/me.jpg").default;
       },
     },
   };

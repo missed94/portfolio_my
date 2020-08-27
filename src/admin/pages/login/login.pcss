@@ -1,0 +1,60 @@
+@import "../../../styles/mixins.pcss";
+
+.login-component {
+  height: 100vh;
+  background: url("../../../images/content/bgc-admin.png") center center / cover
+    no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 50%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: #fff;
+
+  @include tablets {
+    width: 70%;
+  }
+  @include phones {
+    width: 90%;
+    padding: 30px;
+  }
+}
+
+.form-title {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 30px;
+
+  @include phones {
+  font-size: 30px;
+    
+  }
+}
+
+.row {
+  width: 90%;
+  margin-bottom: 25px;
+
+  @include phones {
+
+    margin-bottom: 20px;
+     font-size: 14px; 
+    }
+}
+
+.btn {
+  font-size: 14px;
+}
