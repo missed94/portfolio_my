@@ -1,23 +1,28 @@
 <template>
   <card>
-    <edit-line 
-    class="edit-line" 
-    slot="title" 
-    v-model="categoryTitle" 
-    :editModeByDefault="empty" 
-    @remove="$emit('remove',$event)"/>
+    <edit-line
+      class="edit-line"
+      slot="title"
+      v-model="categoryTitle"
+      :editModeByDefault="empty"
+      @remove="$emit('remove', $event)"
+      @approve="$emit('approve', $event)"
+    />
     <template slot="content">
       <ul class="skills" v-if="empty == false">
         <li class="item" v-for="skill in skills" :key="skill.id">
-          <skill 
-          :skill="skill" 
-          @remove="$emit('remove-skill', $event)"
-          @approve="$emit('edit-skill', $event)"
+          <skill
+            :skill="skill"
+            @remove="$emit('remove-skill', $event)"
+            @approve="$emit('edit-skill', $event)"
           />
         </li>
       </ul>
       <div class="bottom-line">
-        <skill-add-line :blocked="empty"/>
+        <skill-add-line 
+          :blocked="empty" 
+          @approve="$emit('create-skill', $event)"
+        />
       </div>
     </template>
   </card>
@@ -34,19 +39,18 @@ export default {
     card,
     editLine,
     skill,
-    skillAddLine
+    skillAddLine,
   },
   props: {
-    empty:Boolean,
+    empty: Boolean,
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     skills: {
       type: Array,
-      default:() => []
-    }
-
+      default: () => [],
+    },
   },
 
   data() {
@@ -55,7 +59,6 @@ export default {
     };
   },
 };
-</script> 
+</script>
 
-<style lang="postcss" src="./category.pcss" scoped>
-</style>
+<style lang="postcss" src="./category.pcss" scoped></style>

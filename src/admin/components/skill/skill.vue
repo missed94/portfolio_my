@@ -4,7 +4,7 @@
     <div class="pre">{{skill.percent}}</div>
     <div class="button">
       <icon symbol="pencil" class="btn pencil" @click="editmode = true" grayscale />
-      <icon symbol="trash" class="btn" @click="$emit('remove', skill.id)" grayscale />
+      <icon symbol="trash" class="btn" @click="$emit('remove', currentSkill)" grayscale />
     </div>
   </div>
   <div class="skill-component" v-else>
@@ -46,10 +46,12 @@ export default {
     return {
       editmode:false,
       currentSkill: {
-        id: 0,
+        id: this.skill.id,
         title: this.skill.title,
         percent: this.skill.percent,
+        category: this.skill.category,
       }
+
     }
   },
   components: {
