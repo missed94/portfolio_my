@@ -7,7 +7,7 @@
    /> 
    <ul class="tags">
      <li 
-      class="tag"
+      class="tag-item"
       v-for="(tag, index) in tagsArray"
       :key="`${tag}${index}`"
       v-if="tag.trim()"

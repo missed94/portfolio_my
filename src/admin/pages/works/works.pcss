@@ -1,0 +1,111 @@
+@import "../../../styles/mixins.pcss";
+
+.page-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0 40px 0;
+  background: url("../../../images/content/bgc-admin.png") center center / cover
+    no-repeat;
+  flex: 1;
+}
+
+.page-content-header {
+  margin-bottom: 53px;
+}
+
+.title {
+  margin-right: 60px;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 29px;
+  color: #414c63;
+
+  @include phones {
+    margin-bottom: 26px;
+  }
+}
+
+.content {
+}
+.form {
+}
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @include tablets {
+    flex-direction: column;
+  }
+}
+.add-photo {
+  width: 50%;
+
+  @include tablets {
+    width: 100%;
+
+  }
+}
+.add-photo-container {
+  background: #dee4ed;
+  border: 1px dashed #a1a1a1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 35px;
+
+  @include tablets {
+    margin-right: 0;
+    margin-bottom: 40px;
+
+  }
+}
+
+.add-photo-display {
+  padding: 83px 35px 70px 35px;
+}
+.add-photo-desc {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.add-photo-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.add-info {
+  width: 50%;
+  @include tablets {
+    width: 100%;
+
+  }
+}
+
+.add-info {
+}
+.name-input {
+  margin-bottom: 30px;
+}
+.link-input {
+  margin-bottom: 30px;
+
+}
+.desc-textarea {
+
+}
+.tag-adder {
+  margin-top: 30px;
+
+}
+
+
+.add-info-btns {
+  display: flex;
+  justify-content: flex-end;
+
+  @include tablets {
+    justify-content: center;
+
+  }
+}
