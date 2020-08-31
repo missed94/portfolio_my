@@ -8,7 +8,7 @@
           <icon symbol="pencil" grayscale @click="editmode = true"></icon>
         </div>
         <div class="icon">
-          <icon symbol="trash" grayscale></icon>
+          <icon symbol="trash" grayscale @click="$emit('remove')"></icon>
         </div>
       </div>
     </div>
@@ -16,9 +16,7 @@
       <div class="input-wrapper">
         <app-input
           placeholder="Название новой группы"
-          :value="value"
           :errorText="errorText"
-          @input="$emit('input', $event)"
           @keydown.native.enter="onApprove"
           autofocus="autofocus"
           no-side-paddings="no-side-paddings"
@@ -31,7 +29,7 @@
           <icon symbol="tick" @click="onApprove"></icon>
         </div>
         <div class="button-icon">
-          <icon symbol="cross" @click="$emit('remove')"></icon>
+          <icon symbol="cross" @click="resetHandler"></icon>
         </div>
       </div>
     </div>
@@ -74,20 +72,28 @@ validators: {
     return {
       editmode: this.editModeByDefault,
       title: this.value,
-      newCategory: "",
+      newCategory: this.value,
     };
   },
   methods: {
    async onApprove() {
+     console.log(this.newCategory);
     if ((await this.$validate()) === true) {  
-      if (this.title.trim() === this.value.trim()) {
+      if (this.title.trim() === this.newCategory.trim()) {
         this.editmode = false;
       } else {
-        this.title = this.value
+        this.title = this.newCategory
         this.editmode = false
-        this.$emit("approve", this.value);
+        this.$emit("approve", this.newCategory);
       }
       }
+    },
+
+
+    resetHandler() {
+      this.editmode = false
+      this.newCategory = this.value;
+      this.$emit("reset"); 
     },
 
     onRemove() {

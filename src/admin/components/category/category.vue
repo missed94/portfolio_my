@@ -3,9 +3,11 @@
     <edit-line
       class="edit-line"
       slot="title"
-      v-model="categoryTitle"
+      :value="title"
+      @input="$emit('input', $event)"
       :editModeByDefault="empty"
-      @remove="$emit('remove', $event)"
+      @remove="$emit('remove-category')"
+      @reset="resetHandler"
       @approve="$emit('approve', $event)"
     />
     <template slot="content">
@@ -19,10 +21,7 @@
         </li>
       </ul>
       <div class="bottom-line">
-        <skill-add-line 
-          :blocked="empty" 
-          @approve="$emit('create-skill', $event)"
-        />
+        <skill-add-line :blocked="empty" @approve="$emit('create-skill', $event)" />
       </div>
     </template>
   </card>
@@ -50,6 +49,12 @@ export default {
     skills: {
       type: Array,
       default: () => [],
+    },
+  },
+
+  methods: {
+    resetHandler() {
+      this.$emit("reset");
     },
   },
 
