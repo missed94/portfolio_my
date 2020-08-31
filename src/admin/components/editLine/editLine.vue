@@ -78,13 +78,21 @@ validators: {
     };
   },
   methods: {
-    onApprove() {
-      if (this.value.trim() === "") return false;
+   async onApprove() {
+    if ((await this.$validate()) === true) {  
       if (this.title.trim() === this.value.trim()) {
         this.editmode = false;
       } else {
+        this.title = this.value
+        this.editmode = false
         this.$emit("approve", this.value);
       }
+      }
+    },
+
+    onRemove() {
+        this.editmode = false;
+        this.$emit('remove');
     },
 
     submit: function () {

@@ -13,20 +13,15 @@
         </div>
         <ul class="skills">
           <li class="item" v-if="emptyCatIsShown">
-            <category
-              @remove="emptyCatIsShown = false"
-              @approve="createCategory"
-              empty
-            />
+            <category @remove="emptyCatIsShown = false" @approve="createCategory" empty />
           </li>
           <li class="item" v-for="category in categories" :key="category.id">
-            <category 
-              :title="category.category" 
-              :skills="category.skills" 
+            <category
+              :title="category.category"
+              :skills="category.skills"
               @create-skill="createSkill($event, category.id)"
               @edit-skill="editSkill"
               @remove-skill="removeSkill($event)"
-
             />
           </li>
         </ul>
@@ -64,6 +59,8 @@ export default {
     ...mapActions({
       createCategoryAction: "categories/create",
       fetchCategoryAction: "categories/fetch",
+      updateCategoryAction: "categories/update",
+      removeCategoryAction: "categories/remove",
       addSkillAction: "skills/add",
       editSkillAction: "skills/edit",
       removeSkillAction: "skills/remove",
@@ -98,6 +95,16 @@ export default {
 
       }
     },
+    async updateCategory(categoryTitle, categoryId) {
+     await this.updateCategoryAction({
+        title:categoryTitle,
+        id: categoryId
+      })
+    },
+
+    async removeCategory(categoryId) {
+     await this.removeCategoryAction(categoryId);
+    }
   },
 
   created() {
