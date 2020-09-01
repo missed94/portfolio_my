@@ -1,0 +1,50 @@
+@import "../../../styles/mixins.pcss";
+
+
+.form {
+}
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @include tablets {
+    flex-direction: column;
+  }
+}
+
+.add-info {
+  width: 50%;
+  @include tablets {
+    width: 100%;
+
+  }
+}
+
+.add-info {
+}
+.name-input {
+  margin-bottom: 30px;
+}
+.link-input {
+  margin-bottom: 30px;
+
+}
+.desc-textarea {
+
+}
+.tag-adder {
+  margin-top: 30px;
+
+}
+
+
+.add-info-btns {
+  display: flex;
+  justify-content: flex-end;
+
+  @include tablets {
+    justify-content: center;
+
+  }
+}

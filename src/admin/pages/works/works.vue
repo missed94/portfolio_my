@@ -6,37 +6,17 @@
           <div class="title">Блок "Работы"</div>
         </div>
         <div class="content">
-          <form action class="form">
-            <card title="Редактирование работы">
-              <div slot="content" class="form-content">
-                <div class="add-photo">
-                  <div class="add-photo-container">
-                    <div class="add-photo-display">
-                      <div class="add-photo-desc">Перетащите или загрузите для загрузки изображения</div>
-                      <div class="add-photo-btn">
-                        <appButton
-                          class="add-button"
-                          title="Загрузить"
-                          typeAttr="file"
-                          @change="onChange"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="add-info">
-                  <app-input class="name-input" title="Название" />
-                  <app-input class="link-input" title="Ссылка" />
-                  <app-input  title="Описание" fieldType="textarea" />
-                  <tag-adder class="tag-adder" v-model="tags"/>
-                  <div class="add-info-btns">
-                    <appButton plain @click="onClick" title="Отмена"/>
-                    <appButton typeAttr="submit" title="СОХРАНИТЬ"/>
-                  </div>
-                </div>
-              </div>
-            </card>
-          </form>
+          <div class="form-content">
+            <form-works />
+          </div>
+
+          <div class="works-content">
+            <ul class="works-list">
+              <li class="works-item" v-for="work in works" :key="work.id">
+                <card-work :work="work"/> 
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -47,20 +27,28 @@
 
 <script>
 import "../../../styles/main.pcss";
-import card from "./../../components/card/card";
-import button from "./../../components/button/button";
-import input from "./../../components/input/input";
-import tagAdder from "./../../components/tagAdder/tagAdder";
+import formWorks from "./../../components/formWorks/formWorks";
+import cardWork from "./../../components/cardWork/cardWork";
 
 import { mapActions, mapState } from "vuex";
 
 export default {
+
   components: {
-    card,
-    appButton: button,
-    appInput: input,
-    tagAdder,
+    formWorks,
+    cardWork
   },
+
+  data() {
+    return {
+      works:[],
+    }
+  },
+
+  created() {
+    this.works = require('../../../data/works-admin.json');
+  }
+  
 };
 </script>
 
