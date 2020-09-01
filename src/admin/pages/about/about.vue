@@ -21,15 +21,14 @@
               :skills="category.skills"
               @create-skill="createSkill($event, category.id)"
               @edit-skill="editSkill"
-              @remove-skill="removeSkillAction"
+              @remove-skill="removeSkill($event, category.id)"
               @remove-category="removeCategory(category.id)"
               @approve="updateCategory($event, category.id)"
             />
           </li>
         </ul>
-         <div class="container" v-else>loading...</div>
+        <div class="container" v-else>loading...</div>
       </div>
-     
     </div>
   </div>
 </template>
@@ -67,43 +66,79 @@ export default {
       addSkillAction: "skills/add",
       editSkillAction: "skills/edit",
       removeSkillAction: "skills/remove",
+      showTooltip: "tooltips/show",
     }),
 
     async createSkill(skill, categoryId) {
       const newSkill = {
         ...skill,
-        category: categoryId
-      }
-      await this.addSkillAction(newSkill);
+        category: categoryId,
+      };
+      await this.addSkillAction(newSkill, newSkill.title);
 
       skill.title = "";
       skill.percent = "";
+
+      this.showTooltip({
+        text: `Навык ${newSkill.title} добавлен`,
+        type: "success",
+      });
+    },
+
+    async removeSkill(skillToRemove) {
+      await this.removeSkillAction(skillToRemove);
+      this.showTooltip({
+        text: `Запись удалена`,
+        type: "success",
+      });
     },
 
     async editSkill(skill) {
       await this.editSkillAction(skill);
       skill.editmode = false;
+
+      this.showTooltip({
+        text: `Запись успешно изменена`,
+        type: "success",
+      });
     },
 
     async createCategory(categoryTitle) {
       try {
         await this.createCategoryAction(categoryTitle);
-        
+
+        this.showTooltip({
+          text: `Категория ${categoryTitle} добавлена`,
+          type: "success",
+        });
       } catch (error) {
+        this.showTooltip({
+          text: error.message,
+          type: "error",
+        });
         console.log(error.message);
       }
-      this.emptyCatIsShown = false
+      this.emptyCatIsShown = false;
     },
     async updateCategory(categoryTitle, categoryId) {
-     await this.updateCategoryAction({
-        title:categoryTitle,
-        id: categoryId
-      })
+      await this.updateCategoryAction({
+        title: categoryTitle,
+        id: categoryId,
+      });
+
+      this.showTooltip({
+        text: `Запись успешно изменена`,
+        type: "success",
+      });
     },
 
     async removeCategory(categoryId) {
-     await this.removeCategoryAction(categoryId);
-    }
+      await this.removeCategoryAction(categoryId);
+      this.showTooltip({
+        text: `Запись удалена`,
+        type: "success",
+      });
+    },
   },
 
   created() {
