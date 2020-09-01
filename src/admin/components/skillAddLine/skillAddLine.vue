@@ -16,6 +16,7 @@
         maxlength="3"
         v-model="skill.percent"
         :errorMessage="validation.firstError('skill.percent')"
+        @keydown.native.enter="handleClick"
       />
     </div>
     <div class="add-button-wrap">

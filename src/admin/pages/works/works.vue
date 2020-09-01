@@ -13,7 +13,7 @@
           <div class="works-content">
             <ul class="works-list">
               <li class="works-item" v-for="work in works" :key="work.id">
-                <card-work :work="work"/> 
+                <card-work :work="work" />
               </li>
             </ul>
           </div>
@@ -33,22 +33,32 @@ import cardWork from "./../../components/cardWork/cardWork";
 import { mapActions, mapState } from "vuex";
 
 export default {
-
   components: {
     formWorks,
-    cardWork
+    cardWork,
   },
 
   data() {
     return {
-      works:[],
-    }
+      works: [],
+    };
+  },
+
+  methods: {
+    requireImagesToArray(data) {
+      return data.map((item) => {
+        const requiredImage = require(`../../../images/content/${item.photo}`)
+          .default; 
+        item.photo = requiredImage; 
+        return item;
+      });
+    },
   },
 
   created() {
-    this.works = require('../../../data/works-admin.json');
-  }
-  
+    const data = require("../../../data/works-admin.json");
+    this.works = this.requireImagesToArray(data);
+  },
 };
 </script>
 

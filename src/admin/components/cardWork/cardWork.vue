@@ -4,12 +4,14 @@
       <img class="card-work-img" :src="work.photo" />
     </div>
     <div class="card-work-desc">
-      <h4 class="card-work-title">{{work.title}}</h4>
-      <p class="card-work-text">{{work.desc}}</p>
-      <a :href="work.link" class="work-link">{{work.link}}</a>
-      <div class="card-work-btns">
-        <icon symbol="pencil" title="Править" />
-        <icon symbol="cross" title="Удалить" />
+      <div class="card-work-desc-content">
+        <h4 class="card-work-title">{{work.title}}</h4>
+        <p class="card-work-text">{{work.desc}}</p>
+        <a :href="work.link" class="work-link">{{work.link}}</a>
+        <div class="card-work-btns">
+          <icon symbol="pencil" title="Править" />
+          <icon symbol="cross" title="Удалить" />
+        </div>
       </div>
     </div>
   </div>
@@ -32,5 +34,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style lang="postcss" scoped src="./cardWork.pcss"></style>

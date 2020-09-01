@@ -28,3 +28,39 @@
 
 .content {
 }
+
+.works-content {
+}
+
+.works-list {
+  display: flex;
+  flex-wrap:wrap;
+  margin-left: -25px;
+
+  @include tablets {
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    margin-left: 0;
+  }
+}
+
+.works-item {
+  width: calc(100% / 3 - 25px);
+  margin-bottom: 25px;
+  margin-left: 25px;
+  filter: drop-shadow(10px 10px 20px rgba(95, 95, 95, 0.1));
+
+
+  @include desktop {
+    width: calc(100% / 2 - 25px);
+  }
+  @include tablets {
+    width: 65%;
+    margin-left: 0;
+  }
+  
+  @include phones {
+    width: 100%;
+  }
+}
