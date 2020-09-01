@@ -79,16 +79,18 @@ export default {
       } catch (error) {
         console.log(error);
       }
+
+      return true
     },
 
     async update({ commit }, updCategory) {
       try {
         const { data } = await this.$axios.post(`/categories/${updCategory.id}`, {title: updCategory.title});
         commit("UPDATE_CATEGORY", data);
-        console.log(response);
       } catch (error) {
         throw new Error("ошибка");
       }
+      return true;
     },
 
     async delete({ commit }, removeCategory) {

@@ -94,6 +94,7 @@ validators: {
       this.editmode = false
       this.newCategory = this.value;
       this.$emit("reset"); 
+      this.$validate().reset
     },
 
     onRemove() {

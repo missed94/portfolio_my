@@ -84,6 +84,7 @@ export default {
     resetHandler() {
       this.currentSkill.editmode = false
       this.currentSkill.title = this.skill.title
+      this.$validate().reset
     },
   },
 };
