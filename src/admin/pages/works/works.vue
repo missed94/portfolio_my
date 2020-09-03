@@ -1,4 +1,4 @@
-<template>
+<template lang="pug">
   <div class="works-page-component">
     <div class="page-content">
       <div class="container">
@@ -12,6 +12,9 @@
 
           <div class="works-content">
             <ul class="works-list">
+              <li class="works-item">
+                <square-btn type="square" title="Добавить работу" />
+              </li>
               <li class="works-item" v-for="work in works" :key="work.id">
                 <card-work :work="work" />
               </li>
@@ -29,6 +32,7 @@
 import "../../../styles/main.pcss";
 import formWorks from "./../../components/formWorks/formWorks";
 import cardWork from "./../../components/cardWork/cardWork";
+import squareBtn from "./../../components/button/types/squareBtn/squareBtn";
 
 import { mapActions, mapState } from "vuex";
 
@@ -36,6 +40,7 @@ export default {
   components: {
     formWorks,
     cardWork,
+    squareBtn,
   },
 
   data() {
@@ -44,20 +49,21 @@ export default {
     };
   },
 
+  created() {
+    this.works = require("../../../data/works-admin.json");
+  },
+  
   methods: {
-    requireImagesToArray(data) {
-      return data.map((item) => {
-        const requiredImage = require(`../../../images/content/${item.photo}`)
-          .default; 
-        item.photo = requiredImage; 
-        return item;
+    requirePhotos() {
+      this.works = this.works.map((work) => {
+        work.photo = require(`../../../images/content/${work.photo}`).default;
+        return work;
       });
     },
   },
 
-  created() {
-    const data = require("../../../data/works-admin.json");
-    this.works = this.requireImagesToArray(data);
+  mounted() {
+    this.requirePhotos();
   },
 };
 </script>

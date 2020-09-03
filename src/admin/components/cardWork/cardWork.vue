@@ -1,7 +1,14 @@
 <template>
-  <div class="card-work-component">
+  <div class="card-work-component" >
     <div class="card-work-preview">
       <img class="card-work-img" :src="work.photo" />
+      <div class="card-work-tags">
+        <ul class="card-work-tags__list">
+          <li class="card-work-tags__item" v-for="tag in tags" :key="tag">
+            <tag :title="tag" />
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="card-work-desc">
       <div class="card-work-desc-content">
@@ -20,10 +27,12 @@
 <script>
 import "../../../styles/main.pcss";
 import icon from "./../../components/icon/icon";
+import tag from "../tag";
 
 export default {
   components: {
     icon,
+    tag,
   },
 
   props: {
@@ -31,6 +40,15 @@ export default {
       type: Object,
     },
   },
+
+
+  computed: {
+    tags() {
+      return this.work.skills.split(", "); 
+
+      
+    }
+  }
 };
 </script>
 

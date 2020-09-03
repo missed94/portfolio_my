@@ -10,7 +10,6 @@
           @click="hideTooltip"
         />
       </div>
-      
     </div>
   </div>
 </template>

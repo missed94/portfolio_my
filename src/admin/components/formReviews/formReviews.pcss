@@ -1,0 +1,49 @@
+@import "../../../styles/mixins.pcss";
+
+
+
+.form-reviews-component {
+    width: 100%;
+    max-width: 1480px;
+    margin-bottom: 30px;
+}
+
+.form-content {
+    display: flex;
+    align-items: flex-start;
+
+    @include tablets {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+.reviewer-info {
+    width: 60%;
+    @include tablets {
+        width: 100%;
+    }
+
+}
+.reviewer-desc {
+    display: flex;
+    width: 100%;
+    margin-bottom: 35px;
+
+    label {
+        margin-right: 30px;
+        width: 50%;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+.review {
+    margin-bottom: 35px;
+}
+.add-info-btns {
+    display: flex;
+    justify-content: flex-end;
+}

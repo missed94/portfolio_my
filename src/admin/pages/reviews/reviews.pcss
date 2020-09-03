@@ -1,0 +1,74 @@
+@import "../../../styles/mixins.pcss";
+
+.reviews-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0 40px 0;
+  background: url("../../../images/content/bgc-admin.png") center center / cover
+    no-repeat;
+  flex: 1;
+}
+
+.page-content-header {
+  margin-bottom: 53px;
+}
+
+.title {
+  margin-right: 60px;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 29px;
+  color: #414c63;
+
+  @include phones {
+    margin-bottom: 26px;
+  }
+}
+
+.form-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.reviews-list {
+  display: flex;
+  flex-wrap:wrap;
+  margin-left: -25px;
+
+  @include tablets {
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    margin-left: 0;
+  }
+}
+
+.reviews-item {
+  width: calc(100% / 3 - 25px);
+  margin-bottom: 25px;
+  margin-left: 25px;
+  filter: drop-shadow(10px 10px 20px rgba(95, 95, 95, 0.1));
+
+
+  @include desktop {
+    width: calc(100% / 2 - 25px);
+  }
+  @include tablets {
+    width: 65%;
+    margin-left: 0;
+  }
+  
+  @include phones {
+    width: 100%;
+  }
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
