@@ -43,28 +43,22 @@ export default {
     squareBtn,
   },
 
-  data() {
-    return {
-      works: [],
-    };
-  },
+computed: {
+  ...mapState("works", {
+  works: (state) => state.data,  
+  }),
+},
 
-  created() {
-    this.works = require("../../../data/works-admin.json");
-  },
-  
-  methods: {
-    requirePhotos() {
-      this.works = this.works.map((work) => {
-        work.photo = require(`../../../images/content/${work.photo}`).default;
-        return work;
-      });
-    },
-  },
+methods: {
+  ...mapActions({
+    fetchWorks: "works/fetch"
+  }),
+},
 
-  mounted() {
-    this.requirePhotos();
-  },
+mounted() {
+  this.fetchWorks();
+}
+ 
 };
 </script>
 

@@ -1,11 +1,11 @@
 <template>
   <div class="card-work-component" >
     <div class="card-work-preview">
-      <img class="card-work-img" :src="work.photo" />
+      <img class="card-work-img" :src="cover" />
       <div class="card-work-tags">
         <ul class="card-work-tags__list">
-          <li class="card-work-tags__item" v-for="tag in tags" :key="tag">
-            <tag :title="tag" />
+          <li class="card-work-tags__item" v-for="tech in work.techs">
+            <tag :title="tech" />
           </li>
         </ul>
       </div>
@@ -43,11 +43,11 @@ export default {
 
 
   computed: {
-    tags() {
-      return this.work.skills.split(", "); 
+    cover() {
+      return `https://webdev-api.loftschool.com/${this.work.photo}`
+    },
 
-      
-    }
+    
   }
 };
 </script>

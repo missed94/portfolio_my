@@ -15,7 +15,101 @@ max-width: 1480px;
 
   @include tablets {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+}
+
+
+.add-photo {
+  width: 50%;
+  margin-right: 2.1875rem;
+  
+    
+  @include tablets {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-right: 0;
+  
+    }
+}
+
+
+
+
+.add-photo-container {
+  background-color: #dee4ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  
+  
+
+  @include tablets {
+    margin-right: 0;
+    margin-bottom: 40px;
+    max-width: 466px;
+    
+
+
+  }
+}
+
+
+
+
+.add-photo-display {
+  border: 1px dashed #a1a1a1;
+
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+ 
+
+  @include phones {
+    max-height: 160px;
+  }
+}
+
+.add-photo-display.hovered {
+  border: 1px dashed #006aed;
+}
+
+.add-photo-content {
+  padding:  80px 35px 80px 35px;
+
+  @include phones {
+    padding:  54px 35px 54px 35px;
+  }
+
+}
+
+.add-photo-display.active {
+  .add-photo-desc {
+    background-color: rgba(0, 0, 0, 0.3);
+  
+  color: white;
+  }
+}
+
+
+.add-photo-desc {
+  text-align: center;
+  margin-bottom: 40px;
+  @include phones {
+    display: none;
+  }
+}
+.add-photo-btn {
+  display: flex;
+  justify-content: center;
 }
 
 .add-info {
@@ -52,4 +146,19 @@ max-width: 1480px;
     justify-content: center;
 
   }
+}
+
+.update-photo-btn-wrap {
+position: absolute;
+top: 100%;
+left:50%;
+transform:translateX(-50%);
+font-weight: 600;
+font-size: 16px;
+line-height: 1;
+
+@include phones {
+  font-size: 14px;
+
+}
 }
