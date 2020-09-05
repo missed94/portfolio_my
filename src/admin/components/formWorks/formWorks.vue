@@ -39,7 +39,7 @@
             <app-input v-model="newWork.description" title="Описание" fieldType="textarea" />
             <tag-adder v-model="newWork.techs" class="tag-adder" />
             <div class="add-info-btns">
-              <appButton plain title="Отмена" />
+              <appButton plain title="Отмена"/>
               <appButton typeAttr="submit" title="СОХРАНИТЬ" />
             </div>
           </div>
@@ -60,6 +60,8 @@ import imgAdder from "./../../components/imgAdder/imgAdder";
 import { mapActions, mapState } from "vuex";
 
 export default {
+
+  
   components: {
     card,
     appButton: button,
@@ -67,9 +69,15 @@ export default {
     tagAdder,
     imgAdder,
   },
+  props: {
+    shownForm: {
+      type: Boolean
+    }
+  },
 
   data() {
     return {
+      
       hovered: false,
       newWork: {
         title: "",
@@ -85,6 +93,7 @@ export default {
   methods: {
     ...mapActions({
       addNewWork: "works/add",
+      updateWork: "works/update",
     }),
 
     async handleSubmit() {

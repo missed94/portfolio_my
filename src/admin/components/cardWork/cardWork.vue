@@ -1,11 +1,16 @@
 <template>
-  <div class="card-work-component" >
+  <div class="card-work-component">
     <div class="card-work-preview">
       <img class="card-work-img" :src="cover" />
       <div class="card-work-tags">
         <ul class="card-work-tags__list">
-          <li class="card-work-tags__item" v-for="tech in work.techs">
-            <tag :title="tech" />
+          <li
+            class="card-work-tags__item"
+            v-if="tag.trim()"
+            v-for="(tag, index) in tags"
+            :key="`${tag}${index}`"
+          >
+            <tag :title="tag" />
           </li>
         </ul>
       </div>
@@ -16,8 +21,8 @@
         <p class="card-work-text">{{work.desc}}</p>
         <a :href="work.link" class="work-link">{{work.link}}</a>
         <div class="card-work-btns">
-          <icon symbol="pencil" title="Править" />
-          <icon symbol="cross" title="Удалить" />
+          <icon symbol="pencil" title="Править" @click="handleUpdate" />
+          <icon symbol="cross" title="Удалить" @click="handleRemove" />
         </div>
       </div>
     </div>
@@ -41,14 +46,26 @@ export default {
     },
   },
 
+  methods: {
+    handleRemove() {
+      console.log("click");
+      this.$emit("remove-work");
+    },
+
+    handleUpdate() {
+      console.log("update");
+    }
+  },
 
   computed: {
     cover() {
-      return `https://webdev-api.loftschool.com/${this.work.photo}`
+      return `https://webdev-api.loftschool.com/${this.work.photo}`;
     },
 
-    
-  }
+    tags() {
+      return this.work.techs.trim().split(",");
+    },
+  },
 };
 </script>
 

@@ -36,13 +36,13 @@
 <script>
 import "../../../styles/main.pcss";
 import iconedBtn from "./../../components/button/types/iconedBtn/iconedBtn";
-import category from "./../../components/category/category";
+/* import category from "./../../components/category/category"; */
 import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
     iconedBtn,
-    category,
+    category: () => import("./../../components/category/category"),
   },
 
   data() {

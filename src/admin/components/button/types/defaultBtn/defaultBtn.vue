@@ -8,7 +8,7 @@
   >{{title}}</button>
 
   <button
-    type="submit"
+    type="button"
     :class="['default-btn-container', 'btn-decorator', {disabled}, {plain}]"
     v-else-if="typeAttr === 'button'"
     v-on="$listeners"
@@ -37,7 +37,7 @@ export default {
     plain: Boolean,
     typeAttr: {
       type: String,
-      default: "submit",
+      default: "button",
       validator: value => ["button", "file", "submit"].includes(value)
     }
   }

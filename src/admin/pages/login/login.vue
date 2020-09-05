@@ -21,7 +21,7 @@
           />
         </div>
         <div class="btn">
-          <appButton :disabled="isSubmitDisabled" title="Войти" />
+          <appButton :disabled="isSubmitDisabled" title="Войти" typeAttr="submit"/>
         </div>
       </form>
     </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import "../../../styles/main.pcss";
 import appInput from "../../components/input";
 import appButton from "../../components/button";
 import { Validator, mixin as ValidatorMixin } from "simple-vue-validator";
@@ -60,7 +61,8 @@ export default {
   methods: {
 
   ...mapActions ({
-    showTooltip: "tooltips/show"
+    showTooltip: "tooltips/show",
+    login: "user/login",
   }),
   
    async handleSubmit() {
@@ -75,6 +77,9 @@ export default {
             const token = response.data.token;
             localStorage.setItem("token", token);
             $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+            const userResponse = await $axios.get("/user");
+            this.login(userResponse.data.user);
             this.$router.replace("/");
 
         } catch (error) {

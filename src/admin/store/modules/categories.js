@@ -14,7 +14,8 @@ export default {
       state.data.unshift(category)
     },
 
-    UPDATE_CATEGORY(state, updCategory) {state.data.forEach((category) => {
+    UPDATE_CATEGORY(state, updCategory) {
+      state.data.forEach((category) => {
       if(category.id === updCategory.category.id) {
         category.category = updCategory.category.category;
       }

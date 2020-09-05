@@ -1,4 +1,8 @@
 import Vue from "vue";
+import axios from "axios";
+import config from "../../env.paths.json";
+
+axios.defaults.baseURL = config.BASE_URL;
 
 const skillsItem = {
   props: ["skill"],
@@ -9,8 +13,8 @@ const skillsItem = {
       const dashArray = parseInt(
         getComputedStyle(circle).getPropertyValue("stroke-dasharray")
       );
-      const precent = (dashArray / 100) * (100 - this.skill.precent);
-      circle.style.strokeDashoffset = precent;
+      const percent = (dashArray / 100) * (100 - this.skill.percent);
+      circle.style.strokeDashoffset = percent;
     },
   },
   mounted() {
@@ -39,7 +43,8 @@ new Vue({
     };
   },
 
-  created() {
-    this.skills = require("../data/skills.json");
+  async created() {
+    const {data} = await axios.get("/categories/367")
+    this.skills = data
   },
 });
