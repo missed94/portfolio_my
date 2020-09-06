@@ -7,18 +7,24 @@
         </div>
         <div class="content">
           <div class="form-content">
-            <form-works v-if="shownForm == true"/>
+            <form-works
+              v-if="shownForm == true"
+              @submit="submitForm"
+              @close="shownForm = false"
+              :work="work"
+            />
           </div>
 
           <div class="works-content">
             <ul class="works-list">
               <li class="works-item">
-                <square-btn type="square" title="Добавить работу" @click="shownForm = true"/>
+                <square-btn type="square" title="Добавить работу" @click="shownForm = true" />
               </li>
               <li class="works-item" v-for="work in works" :key="work.id">
-                <card-work 
+                <card-work
                   :work="work"
-                  @remove-work="removeWorkNow(work.id)" 
+                  @remove-work="removeWorkNow(work.id)"
+                  @update-work="updateWork"
                 />
               </li>
             </ul>
@@ -43,7 +49,8 @@ export default {
   data() {
     return {
       shownForm: false,
-    }
+      work: null,
+    };
   },
   components: {
     formWorks,
@@ -57,6 +64,14 @@ export default {
     }),
   },
 
+  watch: {
+    shownForm() {
+      if (!this.shownForm) {
+        this.work = null;
+      }
+    },
+  },
+
   methods: {
     ...mapActions({
       fetchWorks: "works/fetch",
@@ -66,7 +81,6 @@ export default {
     }),
 
     async removeWorkNow(workToRemove) {
-      console.log("click");
       await this.removeWorks(workToRemove);
 
       this.showTooltip({
@@ -75,22 +89,18 @@ export default {
       });
     },
 
-    /* async updateWorkNow(workId, workTitle, workLink, workDesc, workTechs, workPhoto, workPreview) {
-      await this.updateWorks({
-        id: categoryId,
-        title: categoryTitle,
-        link:workLink,
-        description:workDesc,
-        techs:workTechs,
-        photo:workPhoto,
-        preview:workPreview  
-      });
-
+    submitForm() {
+      this.shownForm = false;
       this.showTooltip({
-        text: `Запись успешно изменена`,
+        text: `Запись сохранена`,
         type: "success",
       });
-    } */
+    },
+
+    updateWork(work) {
+      this.shownForm = true;
+      this.work = work;
+    },
   },
 
   mounted() {

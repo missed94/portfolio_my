@@ -21,7 +21,7 @@
         <p class="card-work-text">{{work.desc}}</p>
         <a :href="work.link" class="work-link">{{work.link}}</a>
         <div class="card-work-btns">
-          <icon symbol="pencil" title="Править" @click="handleUpdate" />
+          <icon symbol="pencil" title="Править" @click="handleUpdate"/>
           <icon symbol="cross" title="Удалить" @click="handleRemove" />
         </div>
       </div>
@@ -53,7 +53,7 @@ export default {
     },
 
     handleUpdate() {
-      console.log("update");
+      this.$emit("update-work", this.work);
     }
   },
 

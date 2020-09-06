@@ -20,9 +20,12 @@ export default {
     },
 
     UPDATE_WORKS(state, updateWork) {
-      state.data.forEach((work) => {
+      state.data = state.data.map((work) => {
+
         if (work.id === updateWork.work.id) {
-          work.work = updateWork.work.work;
+          return updateWork.work
+        } else {
+          return work
         }
       });
     },
@@ -30,7 +33,6 @@ export default {
 
   actions: {
     async add({ commit }, newWork) {
-      console.log(newWork);
       const formData = new FormData();
 
       Object.keys(newWork).forEach((item) => {
@@ -75,7 +77,7 @@ export default {
         UpdateFormData.append(item, updateWork[item]);
       });
       try {
-        const { data } = await this.$axios.post(`/works`, UpdateFormData);
+        const { data } = await this.$axios.post(`/works/${updateWork.id}`, UpdateFormData);
         commit("UPDATE_WORKS", data);
       } catch (error) {
         console.log("error");

@@ -1,12 +1,11 @@
 @import "../../../styles/mixins.pcss";
 
 .form-works-component {
-margin-bottom: 30px;
-width: 100%;
-max-width: 1480px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 1480px;
 }
 .form {
-
 }
 .form-content {
   display: flex;
@@ -20,46 +19,32 @@ max-width: 1480px;
   }
 }
 
-
 .add-photo {
   width: 50%;
   margin-right: 2.1875rem;
-  
-    
+
   @include tablets {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-right: 0;
-  
-    }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+  }
 }
-
-
-
 
 .add-photo-container {
   background-color: #dee4ed;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100%;
-
-  
-  
 
   @include tablets {
     margin-right: 0;
     margin-bottom: 40px;
     max-width: 466px;
-    
-
-
   }
 }
-
-
-
 
 .add-photo-display {
   border: 1px dashed #a1a1a1;
@@ -71,8 +56,6 @@ max-width: 1480px;
   background-repeat: no-repeat;
   background-position: center center;
 
- 
-
   @include phones {
     max-height: 160px;
   }
@@ -83,22 +66,20 @@ max-width: 1480px;
 }
 
 .add-photo-content {
-  padding:  80px 35px 80px 35px;
+  padding: 80px 35px 80px 35px;
 
   @include phones {
-    padding:  54px 35px 54px 35px;
+    padding: 54px 35px 54px 35px;
   }
-
 }
 
 .add-photo-display.active {
   .add-photo-desc {
     background-color: rgba(0, 0, 0, 0.3);
-  
-  color: white;
+
+    color: white;
   }
 }
-
 
 .add-photo-desc {
   text-align: center;
@@ -112,11 +93,26 @@ max-width: 1480px;
   justify-content: center;
 }
 
+.error-message {
+  display: none;
+  z-index: 100;
+  background: #cd1515;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 100%;
+}
+
+.error-mesage.error {
+  display: block;
+}
+
 .add-info {
   width: 50%;
   @include tablets {
     width: 100%;
-
   }
 }
 
@@ -127,16 +123,12 @@ max-width: 1480px;
 }
 .link-input {
   margin-bottom: 30px;
-
 }
 .desc-textarea {
-
 }
 .tag-adder {
   margin-top: 30px;
-
 }
-
 
 .add-info-btns {
   display: flex;
@@ -144,21 +136,19 @@ max-width: 1480px;
 
   @include tablets {
     justify-content: center;
-
   }
 }
 
 .update-photo-btn-wrap {
-position: absolute;
-top: 100%;
-left:50%;
-transform:translateX(-50%);
-font-weight: 600;
-font-size: 16px;
-line-height: 1;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
 
-@include phones {
-  font-size: 14px;
-
-}
+  @include phones {
+    font-size: 14px;
+  }
 }

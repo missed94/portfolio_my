@@ -3,17 +3,29 @@
   .reviews-content
     .container
       .page-content-header
-        .title Блок "Работы"
+        .title Блок "Отзывы"
       .content
         .form-content
-          form-reviews 
+          form-reviews(
+            v-if="shownForm == true",
+            @submit="submitForm",
+            @close="shownForm = false",
+            :review="review"
+          ) 
         .reviews-container
           ul.reviews-list
             li.reviews-item
-              square-btn(type="square" title="Добавить работу")
-            li.reviews-item(v-for="review in reviews" :key="review.id") 
-              card-reviews(:review="review" ) 
-            
+              square-btn(
+                type="square",
+                title="Добавить работу",
+                @click="shownForm = true"
+              )
+            li.reviews-item(v-for="review in reviews", :key="review.id") 
+              card-reviews(
+                :review="review",
+                @remove-review="removeReviewNow(review.id)",
+                @update-review="updateReview"
+              ) 
 </template>
 
 <script>
@@ -22,37 +34,69 @@ import formReviews from "./../../components/formReviews/formReviews";
 import squareBtn from "./../../components/button/types/squareBtn/squareBtn";
 import cardReviews from "./../../components/cardReviews/cardReviews";
 
+import { mapActions, mapState } from "vuex";
+
 export default {
   components: {
     formReviews,
     squareBtn,
-    cardReviews
+    cardReviews,
   },
 
   data() {
     return {
-      reviews:[],
-    }
+      shownForm: false,
+      review: null,
+    };
   },
 
- 
-
-  created() {
-    this.reviews = require("../../../data/reviews.json");
+  computed: {
+    ...mapState("reviews", {
+      reviews: (state) => state.data,
+    }),
   },
 
-
-   methods: {
-    requirePhotos() {
-      this.reviews = this.reviews.map(review => {
-        review.pic = require(`../../../images/content/${review.pic}`).default;
-        return review
-      })
-    }
+  watch: {
+    shownForm() {
+      if (!this.shownForm) {
+        this.review = null;
+      }
+    },
   },
 
-   mounted() {
-    this.requirePhotos();
+  methods: {
+    ...mapActions({
+      fetchReviews: "reviews/fetch",
+      removeReviews: "reviews/remove",
+      updateReviews: "reviews/update",
+      showTooltip: "tooltips/show"
+    }),
+
+    async removeReviewNow(reviewToRemove) {
+      await this.removeReviews(reviewToRemove);
+
+      this.showTooltip({
+        text: `Запись удалена`,
+        type: "success",
+      });
+    },
+
+    submitForm() {
+      this.shownForm = false;
+      this.showTooltip({
+        text: `Запись сохранена`,
+        type: "success",
+      });
+    },
+
+    updateReview(review) {
+      this.shownForm = true;
+      this.review = review;
+    },
+  },
+
+  mounted() {
+    this.fetchReviews();
   },
 };
 </script>

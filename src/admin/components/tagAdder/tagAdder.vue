@@ -1,27 +1,18 @@
-<template>  
+<template>
   <div class="tags-adder-component">
-   <app-input 
-   title="Добавление тега"
-   v-model="currentTags"
-   @input="$emit('change', currentTags)"
-   /> 
-   <ul class="tags">
-     <li 
-      class="tag-item"
-      v-for="(tag, index) in tagsArray"
-      :key="`${tag}${index}`"
-      v-if="tag.trim()"
-     >
-      <tag 
-        @click="removeTag(tag)"
-        interactive
-        :title="tag" 
-       />
-     </li>
-   </ul>
-
+    <app-input title="Добавление тега" v-model="currentTags" @input="$emit('change', currentTags)" :errorMessage="errorMessage"/>
+    <ul class="tags">
+      <li
+        class="tag-item"
+        v-for="(tag, index) in tagsArray"
+        :key="`${tag}${index}`"
+        v-if="tag.trim()"
+      >
+        <tag @click="removeTag(tag)" interactive :title="tag" />
+      </li>
+    </ul>
+    
   </div>
-
 </template>
 
 <script>
@@ -32,30 +23,35 @@ export default {
   components: {
     appInput,
     tag,
+    tooltip: () => import("components/tooltip"),
   },
 
   props: {
     tags: {
       type: String,
       default: "",
-    }
+    },
+    errorMessage: {
+      type: String,
+      default: "",
+    },
   },
 
   model: {
-    prop:"tags",
-    event:"change",
+    prop: "tags",
+    event: "change",
   },
 
   data() {
     return {
       currentTags: this.tags,
-    }
+    };
   },
 
   computed: {
     tagsArray() {
-      return this.currentTags.trim().split(',')
-    }
+      return this.currentTags.trim().split(",");
+    },
   },
 
   methods: {
@@ -65,15 +61,13 @@ export default {
 
       if (tagNdx < 0) return;
       tags.splice(tagNdx, 1);
-      this.currentTags = tags.join(", ")
+      this.currentTags = tags.join(", ");
 
       this.$emit("change", this.currentTags);
-    }
-  }
-  
-}
+    },
+  },
+};
 </script>
 
 <style lang="postcss" scoped src="./tagAdder.pcss">
-
 </style>

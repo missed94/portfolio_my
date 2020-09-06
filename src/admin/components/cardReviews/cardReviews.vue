@@ -2,9 +2,9 @@
   <div class="card-reviews-component">
     <card>
       <div class="reviewer-avatar" slot="title">
-        <avatar size="2.7" :src="review.pic" />
+        <avatar size="2.7" :src="avatar" />
         <div class="reviewer-wrapper">
-          <div class="reviewer-name">{{review.name}}</div>
+          <div class="reviewer-name">{{review.author}}</div>
           <div class="reviewer-occ"> {{review.occ}}</div>
         </div>
       </div>
@@ -13,8 +13,8 @@
           <p class="review-text">{{review.text}}</p>
         </div>
         <div class="card-reviews-btns">
-          <icon symbol="pencil" title="Править" />
-          <icon symbol="cross" title="Удалить" />
+          <icon symbol="pencil" title="Править" @click="handleUpdate"/>
+          <icon symbol="cross" title="Удалить" @click="handleRemove"/>
         </div>
       </div>
     </card>
@@ -40,6 +40,23 @@ export default {
       type: Object,
     },
   },
+
+  methods: {
+    handleRemove() {
+      console.log("click");
+      this.$emit("remove-review");
+    },
+
+    handleUpdate() {
+      this.$emit("update-review", this.review);
+    }
+  },
+computed: {
+    avatar() {
+      return `https://webdev-api.loftschool.com/${this.review.photo}`;
+    },
+}
+  
 };
 </script>
 
