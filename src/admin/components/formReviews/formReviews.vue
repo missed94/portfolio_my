@@ -5,13 +5,10 @@
       .form-content(slot="content")
         .photo-adder-component
           .photo-adder-content 
-            .error-message(:class="{error: validation.hasError('newReview.preview')}") {{validation.firstError('newReview.preview')}}
+            .error-message(:class="{ error: validation.hasError('preview') }") {{ validation.firstError('preview') }}
             label(@drop="handleChange")
               .photo-wrapper
-                div(
-                  :class="['photo', { active: newReview.preview }]",
-                  :style="thePhoto"
-                )
+                div(:class="['photo', { active: preview }]", :style="thePhoto")
               .btn-wrapper
                 appButton(
                   plain,
@@ -65,7 +62,7 @@ export default {
     "newReview.text"(value) {
       return Validator.value(value).required("Заполните");
     },
-    "newReview.preview"(value) {
+    "preview"(value) {
       return Validator.value(value).required("Загрузите фотографию");
     },
   },
@@ -88,7 +85,7 @@ export default {
   created() {
     if (this.review) {
       this.newReview = { ...this.review };
-      this.newReview.preview = `https://webdev-api.loftschool.com/${this.review.photo}`;
+      this.preview = `https://webdev-api.loftschool.com/${this.review.photo}`;
     }
   },
 
@@ -126,7 +123,7 @@ export default {
       reader.readAsDataURL(file);
 
       reader.onloadend = () => {
-        this.newReview.preview = reader.result;
+        this.preview = reader.result;
       };
 
       /* reader.onerror = () => {
@@ -141,19 +138,21 @@ export default {
 
   computed: {
     thePhoto() {
-      const image = this.newReview.preview;
+      const image = this.preview;
       return `background-image: url(${image})`;
     },
+
+    
   },
 
   data() {
     return {
+      preview: "",
       newReview: {
         author: "",
         occ: "",
         text: "",
         photo: {},
-        preview: "",
       },
     };
   },

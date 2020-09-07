@@ -18,7 +18,7 @@
     <div class="card-work-desc">
       <div class="card-work-desc-content">
         <h4 class="card-work-title">{{work.title}}</h4>
-        <p class="card-work-text">{{work.desc}}</p>
+        <p class="card-work-text">{{work.description}}</p>
         <a :href="work.link" class="work-link">{{work.link}}</a>
         <div class="card-work-btns">
           <icon symbol="pencil" title="Править" @click="handleUpdate"/>

@@ -1,4 +1,8 @@
 import Vue from "vue";
+import axios from "axios";
+import config from "../../env.paths.json";
+
+axios.defaults.baseURL = config.BASE_URL;
 
 const thumbs = {
   props: ["works", "currentWork", "currentIndex"],
@@ -79,7 +83,7 @@ const info = {
   components: { tags },
   computed: {
     tagsArray() {
-      return this.currentWork.skills.split(",");
+      return this.currentWork.techs.split(",");
     },
   },
 };
@@ -118,18 +122,9 @@ new Vue({
   }, */
 
   methods: {
-    /* checkPosition(slider) {
-      this.isEnd = slider.isEnd;
-      this.isBeginning = slider.isBeginning;
-    }, */
+    
 
-    /* makeInfiniteLoopNdx(index) {
-      const worksNumber = this.works.length - 1;
-      if (index < 0) this.currentIndex = worksNumber;
-      if (index > worksNumber) this.currentIndex = 0;
-    }, */
-
-    //метод указывющий на путь к картинке из JSON
+    /* //метод указывющий на путь к картинке из JSON
     requireImagesToArray(data) {
       // название метода с переданным аргументом data
       return data.map((item) => {
@@ -139,7 +134,7 @@ new Vue({
         item.photo = requiredImage; //присваиваем новое значение айтему
         return item;
       });
-    },
+    }, */
 
     slide(direction) {
       
@@ -159,9 +154,9 @@ new Vue({
     },
   },
 
-  created() {
-    // объявление переменно с данными из JSON
-    const data = require("../data/works.json"); //путь к JSON
-    this.works = this.requireImagesToArray(data); // присваивание пустому массиву данные массива из метода requireImagesToArray
+  async created() {
+    const {data} = await axios.get("/works/367")
+    this.works = data;
+    console.log(this.currentWork);
   },
 });

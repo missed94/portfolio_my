@@ -7,7 +7,7 @@
           <div class="add-photo">
             <div class="add-photo-container">
               <label
-                :class="['add-photo-display', {active: newWork.preview}, {hovered: hovered},]"
+                :class="['add-photo-display', {active: preview}, {hovered: hovered},]"
                 :style="theImage"
                 @dragover="handleDragOver"
                 @dragleave="hovered = false"
@@ -31,8 +31,8 @@
               </label>
               <div
                 class="error-message"
-                :class="{error: validation.hasError('newWork.preview')}"
-              >{{validation.firstError('newWork.preview')}}</div>
+                :class="{error: validation.hasError('preview')}"
+              >{{validation.firstError('preview')}}</div>
             </div>
           </div>
           <div class="add-info">
@@ -98,7 +98,7 @@ export default {
     "newWork.techs"(value) {
       return Validator.value(value).required("Заполните");
     },
-    "newWork.preview"(value) {
+    preview(value) {
       return Validator.value(value).required("Загрузите превью");
     },
   },
@@ -122,27 +122,27 @@ export default {
   created() {
     if (this.work) {
       this.newWork = { ...this.work };
-      this.newWork.preview = `https://webdev-api.loftschool.com/${this.work.photo}`;
+      this.preview = `https://webdev-api.loftschool.com/${this.work.photo}`;
     }
   },
 
   data() {
     return {
       hovered: false,
+      preview: "",
       newWork: {
         title: "",
         link: "",
         description: "",
         techs: "",
         photo: {},
-        preview: "",
       },
     };
   },
 
   computed: {
     theImage() {
-      const image = this.newWork.preview;
+      const image = this.preview;
       return `background-image: url(${image})`;
     },
   },
@@ -182,7 +182,7 @@ export default {
       reader.readAsDataURL(file);
 
       reader.onloadend = () => {
-        this.newWork.preview = reader.result;
+        this.preview = reader.result;
       };
 
       /* reader.onerror = () => {
