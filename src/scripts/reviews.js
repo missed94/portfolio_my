@@ -62,6 +62,9 @@ new Vue({
 
   async created() {
     const {data} = await axios.get("/reviews/367")
-    this.reviews = data; 
+    this.reviews = data.map(review => {
+      review.photo = `https://webdev-api.loftschool.com/${review.photo}`;
+      return review;
+    });
   },
 });

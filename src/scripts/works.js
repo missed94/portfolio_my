@@ -12,16 +12,13 @@ const thumbs = {
       viewThumb: 3,
       current: 0,
       theIndex: this.currentIndex,
-    }
+    };
   },
-  
 
-  watch:  {
+  watch: {
     currentIndex() {
-
       this.moveThumbList(this.currentIndex);
-
-    }
+    },
   },
 
   mounted() {
@@ -33,7 +30,7 @@ const thumbs = {
       if (this.currentIndex > this.theIndex) {
         const stash = currentIndex + 1 - this.viewThumb;
 
-        if (currentIndex +1 > this.viewThumb) {
+        if (currentIndex + 1 > this.viewThumb) {
           this.transformIt(stash);
         }
       } else {
@@ -43,16 +40,18 @@ const thumbs = {
 
         if (this.current === currentIndex) {
           this.transformIt(this.current);
-          this.current--
-        } 
+          this.current--;
+        }
       }
       this.theIndex = this.currentIndex;
     },
 
     transformIt(index) {
-      this.$refs["thumbs-container"].style.transform = `translateX(-${100 / 3 * index}%)`;
-    }
-  } 
+      this.$refs["thumbs-container"].style.transform = `translateX(-${
+        (100 / 3) * index
+      }%)`;
+    },
+  },
 };
 
 const btns = {
@@ -61,13 +60,22 @@ const btns = {
 };
 
 const display = {
-  props: ["currentWork", "works", "currentIndex","isBegin","isEnd"],
+  props: { 
+    currentWork: {
+      type: Object,
+      default: ()=> ({})
+    }, 
+    works: Array, 
+    currentIndex: Number, 
+    isBegin: Boolean, 
+    isEnd: Boolean 
+  },
   template: "#preview-display",
   components: { thumbs, btns },
   computed: {
     Works() {
       const works = [...this.works];
-      return works.slice(0, 5);
+      return works.slice(0, 6);
     },
   },
 };
@@ -78,12 +86,19 @@ const tags = {
 };
 
 const info = {
-  props: ["currentWork"],
+  props: {
+    currentWork: {
+      type: Object,
+      default: () => ({})
+    },
+  },
   template: "#preview-info",
   components: { tags },
   computed: {
     tagsArray() {
-      return this.currentWork.techs.split(",");
+      if (Object.keys(this.currentWork).length) {
+        return this.currentWork.techs.split(",");
+      }
     },
   },
 };
@@ -97,33 +112,30 @@ new Vue({
     return {
       works: [],
       currentIndex: 0,
-      
     };
   },
 
   computed: {
     currentWork() {
-        return this.works[this.currentIndex];  
+      return this.works[this.currentIndex];
     },
 
     isEnd() {
-			return this.currentIndex === this.works.length - 1;
+      return this.currentIndex === this.works.length - 1;
     },
-    
-		isBegin() {
-			return this.currentIndex === 0;
-		}
+
+    isBegin() {
+      return this.currentIndex === 0;
+    },
   },
 
- /*  watch: {
+  /*  watch: {
     currentIndex(value) {
       this.makeInfiniteLoopNdx(value);
     },
   }, */
 
   methods: {
-    
-
     /* //метод указывющий на путь к картинке из JSON
     requireImagesToArray(data) {
       // название метода с переданным аргументом data
@@ -137,16 +149,14 @@ new Vue({
     }, */
 
     slide(direction) {
-      
       switch (direction) {
         case "next":
           this.currentIndex++;
-            break;
+          break;
         case "prev":
           this.currentIndex--;
-            break;
-        
-      
+          break;
+
         default:
           this.currentIndex = direction;
           break;
@@ -155,8 +165,10 @@ new Vue({
   },
 
   async created() {
-    const {data} = await axios.get("/works/367")
-    this.works = data;
-    console.log(this.currentWork);
+    const { data } = await axios.get("/works/367");
+    this.works = data.map((work) => {
+      work.photo = `https://webdev-api.loftschool.com/${work.photo}`;
+      return work;
+    });
   },
 });
