@@ -31,13 +31,14 @@ const thumbs = {
         const stash = currentIndex + 1 - this.viewThumb;
 
         if (currentIndex + 1 > this.viewThumb) {
-          this.transformIt(stash);
-        }
-      } else {
-        if (currentIndex + 1 > this.viewThumb) {
           this.current = currentIndex + 1 - 3;
         }
 
+        if (currentIndex + 1 > this.viewThumb) {
+          this.transformIt(stash);
+        }
+      } else {
+        
         if (this.current === currentIndex) {
           this.transformIt(this.current);
           this.current--;
@@ -75,7 +76,7 @@ const display = {
   computed: {
     Works() {
       const works = [...this.works];
-      return works.slice(0, 6);
+      return works.slice(0,10);
     },
   },
 };

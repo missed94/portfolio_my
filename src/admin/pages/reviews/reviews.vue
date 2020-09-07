@@ -18,13 +18,13 @@
               square-btn(
                 type="square",
                 title="Добавить работу",
-                @click="shownForm = true"
+                @click="handleShownForm"
               )
             li.reviews-item(v-for="review in reviews", :key="review.id") 
               card-reviews(
                 :review="review",
                 @remove-review="removeReviewNow(review.id)",
-                @update-review="updateReview"
+                @update-review="updateReview(review)"
               ) 
 </template>
 
@@ -92,7 +92,16 @@ export default {
     updateReview(review) {
       this.shownForm = true;
       this.review = review;
+      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
+
     },
+
+    handleShownForm() {
+      this.shownForm = true
+      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
+    }
+
+
   },
 
   mounted() {

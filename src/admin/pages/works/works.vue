@@ -18,7 +18,7 @@
           <div class="works-content">
             <ul class="works-list">
               <li class="works-item">
-                <square-btn type="square" title="Добавить работу" @click="shownForm = true" />
+                <square-btn type="square" title="Добавить работу" @click="handleShownForm" />
               </li>
               <li class="works-item" v-for="work in works" :key="work.id">
                 <card-work
@@ -100,7 +100,13 @@ export default {
     updateWork(work) {
       this.shownForm = true;
       this.work = work;
+      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
     },
+
+    handleShownForm() {
+      this.shownForm = true
+      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
+    }
   },
 
   mounted() {
