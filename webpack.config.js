@@ -130,6 +130,10 @@ module.exports = (env, argv) => {
       }),
       new SpriteLoaderPlugin({ plainSprite: true }),
       new VueLoaderPlugin(),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      }),
     ],
     devtool: "#eval-source-map",
   };

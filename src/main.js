@@ -7,3 +7,4 @@ import "./scripts/skills";
 import "./scripts/reviews";
 import "./scripts/works";
 import "./scripts/full-menu";
+import "./scripts/anchor-animated";
