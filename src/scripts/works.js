@@ -1,7 +1,7 @@
 import Vue from "vue";
 import axios from "axios";
 import config from "../../env.paths.json";
-
+import animate from "animate.css"
 axios.defaults.baseURL = config.BASE_URL;
 
 const thumbs = {
@@ -38,7 +38,6 @@ const thumbs = {
           this.transformIt(stash);
         }
       } else {
-        
         if (this.current === currentIndex) {
           this.transformIt(this.current);
           this.current--;
@@ -61,22 +60,39 @@ const btns = {
 };
 
 const display = {
-  props: { 
+  props: {
     currentWork: {
       type: Object,
-      default: ()=> ({})
-    }, 
-    works: Array, 
-    currentIndex: Number, 
-    isBegin: Boolean, 
-    isEnd: Boolean 
+      default: () => ({}),
+    },
+    works: Array,
+    currentIndex: Number,
+    isBegin: Boolean,
+    isEnd: Boolean,
   },
   template: "#preview-display",
   components: { thumbs, btns },
   computed: {
     Works() {
       const works = [...this.works];
-      return works.slice(0,10);
+      return works.slice(0, 10);
+    },
+  },
+  methods: {
+    leave(el) {
+      console.log(el);
+      el.classList.add("slider-reverse");
+    },
+    beforeEnter(el) {
+      el.classList.add("slide-out");
+    },
+    afterEnter(el) {
+      el.classList.remove("slide-out");
+    },
+
+    afterLeave(el) {
+      console.log(el);
+      el.classList.remove("slider-reverse");
     },
   },
 };
@@ -90,7 +106,7 @@ const info = {
   props: {
     currentWork: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
   },
   template: "#preview-info",
@@ -102,6 +118,7 @@ const info = {
       }
     },
   },
+
 };
 
 new Vue({

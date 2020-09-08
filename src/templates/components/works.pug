@@ -2,7 +2,7 @@ script(type="text/x-template")#preview-container
   .works-preview 
     display(
       :isEnd='isEnd'
-			:isBegin='isBegin'
+      :isBegin='isBegin'
       :currentWork="currentWork",
       :works="works",
       :currentIndex="currentIndex",
@@ -16,7 +16,16 @@ script(type="text/x-template")#preview-display
   .works-preview__pictures(:data-slide="currentIndex + 1")
     .works-preview__pictures-content
       .works-preview__pictures-container
-        img(:src="currentWork.photo").works-preview__full-pic
+        transition-group(
+          tag="div"
+          name="slide"
+          class="slide-transition"
+          @before-enter="beforeEnter"
+          @after-enter="afterEnter"
+          @leave="leave"
+          @after-leave="afterLeave"
+        )
+          img(:key="currentWork.photo" :src="currentWork.photo").works-preview__full-pic
       .works-preview__thumbs
         thumbs(:works="Works"
         :currentWork="currentWork"
@@ -27,14 +36,14 @@ script(type="text/x-template")#preview-display
       .works-preview__btns
         btns(
           :isEnd='isEnd'
-			    :isBegin='isBegin'
+          :isBegin='isBegin'
           @slide="$emit('slide', $event)"
         )
 
 script(type="text/x-template")#preview-thumbs
   ul(
-      ref="thumbs-container"
-      
+    ref="thumbs-container"
+
     ).thumbs
     li.thumbs__item(
       v-for="(slide, index) in works" :key="slide.id"
@@ -63,7 +72,7 @@ script(type="text/x-template")#preview-btns
       +icon('arrow-down', 'arrow-prev')
 
 script(type="text/x-template")#preview-info
-  .works-preview__info
+  .works-preview__info(:key="currentWork.id")
     .works-preview__tags
       tags(
         :tags="tagsArray"

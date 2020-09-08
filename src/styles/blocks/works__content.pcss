@@ -5,8 +5,7 @@
 
   @include desktop {
     padding-top: 7%;
-    padding-bottom: 12%; 
-    
+    padding-bottom: 12%;
   }
   @include tablets {
     padding-top: 10%;
@@ -44,21 +43,62 @@
   }
 }
 
+.slide-transition {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  img {
+    position: absolute;
+  }
+}
+
+@keyframes slide {
+  from {
+    left: -1000px;
+  }
+  50% {
+    left: 100px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+.slide-out {
+  animation: slide 2.5s;
+}
+
+@keyframes slideReverse {
+  from {
+    left: 0;
+  }
+  50% {
+    left: 100px;
+  }
+  to {
+    left: -1000px;
+  }
+}
+
+.slider-reverse {
+  animation: slideReverse 2.5s;
+}
+
 .works-preview__pictures {
   position: relative;
   width: 50%;
   max-width: 975px;
   margin-right: 150px;
   z-index: 10;
-height: 100%;
+  height: 100%;
   @include desktop {
-    
     max-width: 39.8125rem;
     margin-right: 6rem;
   }
 
   @include tablets {
-    align-self:flex-start;
+    align-self: flex-start;
     width: 90%;
     margin-right: 0;
     max-width: 637px;
@@ -72,7 +112,6 @@ height: 100%;
     transform: translateX(-8%);
     margin-bottom: 60px;
   }
-
 
   &:before {
     content: attr(data-slide);
@@ -88,19 +127,17 @@ height: 100%;
     z-index: -1;
 
     @include desktop {
-      font-size: 23vw; 
+      font-size: 23vw;
       bottom: 19%;
     }
 
     @include tablets {
-      font-size: 35vw; 
+      font-size: 35vw;
     }
 
-    
-  @include phones {
-    display: none;
-  }
-   
+    @include phones {
+      display: none;
+    }
   }
 }
 
@@ -141,12 +178,10 @@ height: 100%;
   border: 2px solid transparent;
 
   //width: calc(160px * 3);
-  
-
 
   @include desktop {
     //max-width: 464px;
-  } 
+  }
 }
 
 .works-preview__btns {
@@ -162,5 +197,3 @@ height: 100%;
     transform: translateX(0);
   }
 }
-
-

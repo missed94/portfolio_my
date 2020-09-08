@@ -2,7 +2,29 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: url("../images/content/bgc-admin.png") center center / cover
+    no-repeat;
 }
+
+.page-enter-active,.page-leave-active {
+  transition: transform 1s, opacity 0.7s;
+}
+
+.page-enter,.page-leave-to {
+  opacity: 0;
+  transform: translateX(-700px)
+  //выход
+}
+.page-enter-to,.page-leave {
+  opacity: 1;
+  transform: translateX(0)
+
+  //вход
+}
+
+
+
+
 
 .notification {
   transition: transform 0.3s;

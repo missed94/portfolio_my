@@ -97,9 +97,9 @@ export default {
       });
     },
 
-    updateWork(work) {
+    updateWork(workToUpdate) {
       this.shownForm = true;
-      this.work = work;
+      this.work = workToUpdate;
       this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
     },
 
