@@ -80,7 +80,6 @@ const display = {
   },
   methods: {
     leave(el) {
-      console.log(el);
       el.classList.add("slider-reverse");
     },
     beforeEnter(el) {
@@ -91,7 +90,6 @@ const display = {
     },
 
     afterLeave(el) {
-      console.log(el);
       el.classList.remove("slider-reverse");
     },
   },

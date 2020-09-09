@@ -1,31 +1,32 @@
 <template lang="pug">
-.reviews-page-component
-  .reviews-content
-    .container
-      .page-content-header
-        .title Блок "Отзывы"
-      .content
-        .form-content
-          form-reviews(
-            v-if="shownForm == true",
-            @submit="submitForm",
-            @close="shownForm = false",
-            :review="review"
-          ) 
-        .reviews-container
-          ul.reviews-list
-            li.reviews-item
-              square-btn(
-                type="square",
-                title="Добавить работу",
-                @click="handleShownForm"
-              )
-            li.reviews-item(v-for="review in reviews", :key="review.id") 
-              card-reviews(
-                :review="review",
-                @remove-review="removeReviewNow(review.id)",
-                @update-review="updateReview(review)"
-              ) 
+transition(name="reviews" tag="div" mode="out-in" appear)
+  .reviews-page-component
+    .reviews-content
+      .container
+        .page-content-header
+          .title Блок "Отзывы"
+        .content
+          .form-content
+            form-reviews(
+              v-if="shownForm == true",
+              @submit="submitForm",
+              @close="handleUnShownForm",
+              :review="review"
+            ) 
+          .reviews-container
+            ul.reviews-list
+              li.reviews-item
+                square-btn(
+                  type="square",
+                  title="Добавить работу",
+                  @click="handleNewReview"
+                )
+              li.reviews-item(v-for="review in reviews", :key="review.id") 
+                card-reviews(
+                  :review="review",
+                  @remove-review="removeReviewNow(review.id)",
+                  @update-review="updateReview"
+                ) 
 </template>
 
 <script>
@@ -82,24 +83,35 @@ export default {
     },
 
     submitForm() {
-      this.shownForm = false;
+      this.handleUnShownForm();
       this.showTooltip({
         text: `Запись сохранена`,
         type: "success",
       });
     },
 
-    updateReview(review) {
-      this.shownForm = true;
-      this.review = review;
-      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
+    async updateReview(reviewToUpdate) {
+      await this.handleUnShownForm();
+      this.review = reviewToUpdate;
+      this.handleShownForm();
 
+      //this.$el.scrollIntoView({block: "start", behavior: "smooth"});
     },
 
     handleShownForm() {
-      this.shownForm = true
-      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
-    }
+      this.shownForm = true;
+      this.$el.scrollIntoView({ block: "start", behavior: "smooth" });
+    },
+
+    handleUnShownForm() {
+      this.shownForm = false;
+    },
+
+    async handleNewReview() {
+      await this.handleUnShownForm();
+      this.review = null;
+      this.handleShownForm();
+    },
 
 
   },

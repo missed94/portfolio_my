@@ -8,6 +8,22 @@
   flex: 1;
 }
 
+.works-enter-active,.works-leave-active {
+  transition: transform 1s, opacity 0.7s;
+}
+
+.works-enter,.works-leave-to {
+  opacity: 0;
+  transform: translateX(-700px)
+  //выход
+}
+.works-enter-to,.works-leave {
+  opacity: 1;
+  transform: translateX(0)
+
+  //вход
+}
+
 .page-content-header {
   margin-bottom: 53px;
 }

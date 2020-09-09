@@ -1,38 +1,40 @@
 <template>
-  <div class="works-page-component">
-    <div class="page-content">
-      <div class="container">
-        <div class="page-content-header">
-          <div class="title">Блок "Работы"</div>
-        </div>
-        <div class="content">
-          <div class="form-content">
-            <form-works
-              v-if="shownForm == true"
-              @submit="submitForm"
-              @close="shownForm = false"
-              :work="work"
-            />
+  <transition name="works" tag="div" mode="out-in" appear>
+    <div class="works-page-component">
+      <div class="page-content">
+        <div class="container">
+          <div class="page-content-header">
+            <div class="title">Блок "Работы"</div>
           </div>
+          <div class="content">
+            <div class="form-content">
+              <form-works
+                v-if="shownForm == true"
+                @submit="submitForm"
+                @close="handleUnShownForm"
+                :work="work"
+              />
+            </div>
 
-          <div class="works-content">
-            <ul class="works-list">
-              <li class="works-item">
-                <square-btn type="square" title="Добавить работу" @click="handleShownForm" />
-              </li>
-              <li class="works-item" v-for="work in works" :key="work.id">
-                <card-work
-                  :work="work"
-                  @remove-work="removeWorkNow(work.id)"
-                  @update-work="updateWork"
-                />
-              </li>
-            </ul>
+            <div class="works-content">
+              <ul class="works-list">
+                <li class="works-item">
+                  <square-btn type="square" title="Добавить работу" @click="handleNewWork" />
+                </li>
+                <li class="works-item" v-for="work in works" :key="work.id">
+                  <card-work
+                    :work="work"
+                    @remove-work="removeWorkNow(work.id)"
+                    @update-work="updateWork"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 
@@ -90,23 +92,35 @@ export default {
     },
 
     submitForm() {
-      this.shownForm = false;
+      this.handleUnShownForm();
       this.showTooltip({
         text: `Запись сохранена`,
         type: "success",
       });
     },
 
-    updateWork(workToUpdate) {
-      this.shownForm = true;
+    async updateWork(workToUpdate) {
+      await this.handleUnShownForm();
       this.work = workToUpdate;
-      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
+      this.handleShownForm();
+
+      //this.$el.scrollIntoView({block: "start", behavior: "smooth"});
     },
 
     handleShownForm() {
-      this.shownForm = true
-      this.$el.scrollIntoView({block: "start", behavior: "smooth"}); 
-    }
+      this.shownForm = true;
+      this.$el.scrollIntoView({ block: "start", behavior: "smooth" });
+    },
+
+    handleUnShownForm() {
+      this.shownForm = false;
+    },
+
+    async handleNewWork() {
+      await this.handleUnShownForm();
+      this.work = null;
+      this.handleShownForm();
+    },
   },
 
   mounted() {

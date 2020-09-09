@@ -1,36 +1,38 @@
 <template>
-  <div class="about-page-component">
-    <div class="page-content">
-      <div class="container">
-        <div class="page-content__header">
-          <div class="title">Блок "Обо мне"</div>
-          <iconed-btn
-            type="iconed"
-            title="Добавить группу"
-            v-if="emptyCatIsShown == false"
-            @click="emptyCatIsShown = true"
-          />
-        </div>
-        <ul class="skills" v-if="true">
-          <li class="item" v-if="emptyCatIsShown">
-            <category @reset="emptyCatIsShown = false" @approve="createCategory" empty />
-          </li>
-          <li class="item" v-for="category in categories" :key="category.id">
-            <category
-              :title="category.category"
-              :skills="category.skills"
-              @create-skill="createSkill($event, category.id)"
-              @edit-skill="editSkill"
-              @remove-skill="removeSkill($event, category.id)"
-              @remove-category="removeCategory(category.id)"
-              @approve="updateCategory($event, category.id)"
+  <transition tag="div" name="about" mode="out-in" appear>
+    <div class="about-page-component">
+      <div class="page-content">
+        <div class="container">
+          <div class="page-content__header">
+            <div class="title">Блок "Обо мне"</div>
+            <iconed-btn
+              type="iconed"
+              title="Добавить группу"
+              v-if="emptyCatIsShown == false"
+              @click="emptyCatIsShown = true"
             />
-          </li>
-        </ul>
-        <div class="container" v-else>loading...</div>
+          </div>
+          <ul class="skills" v-if="true">
+            <li class="item" v-if="emptyCatIsShown">
+              <category @reset="emptyCatIsShown = false" @approve="createCategory" empty />
+            </li>
+            <li class="item" v-for="category in categories" :key="category.id">
+              <category
+                :title="category.category"
+                :skills="category.skills"
+                @create-skill="createSkill($event, category.id)"
+                @edit-skill="editSkill"
+                @remove-skill="removeSkill($event, category.id)"
+                @remove-category="removeCategory(category.id)"
+                @approve="updateCategory($event, category.id)"
+              />
+            </li>
+          </ul>
+          <div class="container" v-else>loading...</div>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>

@@ -6,6 +6,23 @@
   flex-direction:column;
   padding: 50px 0 40px 0;
   flex:1;
+  position: relative;
+}
+
+.about-enter-active,.about-leave-active {
+  transition: transform 1s, opacity 0.7s;
+}
+
+.about-enter,.about-leave-to {
+  opacity: 0;
+  transform: translateX(-700px)
+  //выход
+}
+.about-enter-to,.about-leave {
+  opacity: 1;
+  transform: translateX(0)
+
+  //вход
 }
 
 .page-content__header {

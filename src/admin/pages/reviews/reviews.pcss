@@ -9,6 +9,22 @@
   flex: 1;
 }
 
+.reviews-enter-active,.reviews-leave-active {
+  transition: transform 1s, opacity 0.7s;
+}
+
+.reviews-enter,.reviews-leave-to {
+  opacity: 0;
+  transform: translateX(-700px)
+  //выход
+}
+.reviews-enter-to,.reviews-leave {
+  opacity: 1;
+  transform: translateX(0)
+
+  //вход
+}
+
 .reviews-container {
   width: 100%;
 }
