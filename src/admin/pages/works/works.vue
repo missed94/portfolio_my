@@ -1,6 +1,11 @@
 <template>
-  <transition name="works" tag="div" mode="out-in" appear>
-    <div class="works-page-component">
+  <transition
+    name="works"
+    tag="div"
+    mode="out-in"
+    appear
+  >
+    <div :key="2" class="works-page-component">
       <div class="page-content">
         <div class="container">
           <div class="page-content-header">
@@ -114,6 +119,7 @@ export default {
 
     handleUnShownForm() {
       this.shownForm = false;
+      this.$el.scrollIntoView({ block: "center", behavior: "smooth" });
     },
 
     async handleNewWork() {
@@ -121,6 +127,7 @@ export default {
       this.work = null;
       this.handleShownForm();
     },
+
   },
 
   mounted() {

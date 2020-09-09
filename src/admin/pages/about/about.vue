@@ -1,6 +1,6 @@
 <template>
   <transition tag="div" name="about" mode="out-in" appear>
-    <div class="about-page-component">
+    <div :key="1" class="about-page-component">
       <div class="page-content">
         <div class="container">
           <div class="page-content__header">
@@ -145,6 +145,7 @@ export default {
 
   created() {
     this.fetchCategoryAction();
+    
   },
 };
 </script>

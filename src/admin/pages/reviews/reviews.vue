@@ -1,6 +1,6 @@
 <template lang="pug">
 transition(name="reviews" tag="div" mode="out-in" appear)
-  .reviews-page-component
+  .reviews-page-component(:key="3")
     .reviews-content
       .container
         .page-content-header
@@ -105,6 +105,8 @@ export default {
 
     handleUnShownForm() {
       this.shownForm = false;
+      this.$el.scrollIntoView({ block: "center", behavior: "smooth" });
+
     },
 
     async handleNewReview() {
